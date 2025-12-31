@@ -1,0 +1,88 @@
+---
+title: Blockquote
+description: Styled quote blocks with optional citation
+component: blockquote
+published: true
+---
+
+import { Blockquote } from "@/components/mdx/blockquote"
+
+## Installation
+
+Install the component using the CLI:
+
+```bash
+npx mdx-ui add blockquote
+```
+
+## Usage
+
+Import and use the component in your MDX files:
+
+```tsx
+import { Blockquote } from "@/components/mdx/blockquote"
+
+<Blockquote>
+  This is a blockquote
+</Blockquote>
+```
+
+## Examples
+
+### Simple Blockquote
+
+A basic blockquote without citation.
+
+<div className="preview">
+  <Blockquote>
+    The best way to predict the future is to invent it.
+  </Blockquote>
+</div>
+
+```tsx
+<Blockquote>
+  The best way to predict the future is to invent it.
+</Blockquote>
+```
+
+### With Citation
+
+Add a citation to attribute the quote to someone.
+
+<div className="preview">
+  <Blockquote cite="Alan Kay">
+    The best way to predict the future is to invent it.
+  </Blockquote>
+</div>
+
+```tsx
+<Blockquote cite="Alan Kay">
+  The best way to predict the future is to invent it.
+</Blockquote>
+```
+
+### Long Quote
+
+Blockquote with multiple paragraphs.
+
+<div className="preview">
+  <Blockquote cite="Steve Jobs">
+    <p>Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.</p>
+    <p>And the only way to do great work is to love what you do.</p>
+  </Blockquote>
+</div>
+
+```tsx
+<Blockquote cite="Steve Jobs">
+  <p>Your work is going to fill a large part of your life...</p>
+  <p>And the only way to do great work is to love what you do.</p>
+</Blockquote>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | The quote content |
+| `cite` | `string` | - | Optional citation/author name |
+| `className` | `string` | - | Additional CSS classes |

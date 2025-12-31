@@ -1,0 +1,42 @@
+{
+  "title": "Documentation",
+  "path": "/docs",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Getting Started"
+    },
+    {
+      "title": "Introduction",
+      "path": "/docs"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Components"
+    },
+    {
+      "title": "Blockquote",
+      "path": "/docs/components/blockquote"
+    },
+    {
+      "title": "Callout",
+      "path": "/docs/components/callout"
+    },
+    {
+      "title": "Heading",
+      "path": "/docs/components/heading"
+    },
+    {
+      "title": "Headings",
+      "path": "/docs/components/headings"
+    },
+    {
+      "title": "Paragraph",
+      "path": "/docs/components/paragraph"
+    },
+    {
+      "title": "Steps",
+      "path": "/docs/components/steps"
+    }
+  ]
+}

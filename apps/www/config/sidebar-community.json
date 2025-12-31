@@ -1,0 +1,57 @@
+{
+  "title": "Community",
+  "path": "/community",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Get Involved"
+    },
+    {
+      "title": "Overview",
+      "path": "/community"
+    },
+    {
+      "title": "Contributing",
+      "path": "/community/contributing"
+    },
+    {
+      "title": "Code of Conduct",
+      "path": "/community/code-of-conduct"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Community Resources"
+    },
+    {
+      "title": "GitHub Discussions",
+      "path": "https://github.com/yourusername/mdx-ui/discussions",
+      "external": true
+    },
+    {
+      "title": "Discord Server",
+      "path": "https://discord.gg/mdx-ui",
+      "external": true
+    },
+    {
+      "title": "Twitter",
+      "path": "https://twitter.com/mdxui",
+      "external": true
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Acknowledgements"
+    },
+    {
+      "title": "Team",
+      "path": "/community/team"
+    },
+    {
+      "title": "Sponsors",
+      "path": "/community/sponsors"
+    },
+    {
+      "title": "Changelog",
+      "path": "/community/changelog"
+    }
+  ]
+}

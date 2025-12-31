@@ -1,0 +1,104 @@
+---
+title: Callout
+description: Alert boxes for important information with variants
+component: callout
+published: true
+registryDependencies: ["utils"]
+dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
+---
+
+import { Callout } from "@/components/mdx/callout"
+
+## Installation
+
+Install the component using the CLI:
+
+```bash
+npx mdx-ui add callout
+```
+
+This will automatically install the `utils` dependency.
+
+## Usage
+
+```tsx
+import { Callout } from "@/components/mdx/callout"
+
+<Callout>
+  This is a default callout
+</Callout>
+```
+
+## Examples
+
+### Info Callout
+
+Use for informational messages.
+
+<div className="preview">
+  <Callout variant="info">
+    This is an informational message to help guide users.
+  </Callout>
+</div>
+
+```tsx
+<Callout variant="info">
+  This is an informational message to help guide users.
+</Callout>
+```
+
+### Warning Callout
+
+Use for warnings that need attention.
+
+<div className="preview">
+  <Callout variant="warning">
+    Warning: This action cannot be undone. Please proceed with caution.
+  </Callout>
+</div>
+
+```tsx
+<Callout variant="warning">
+  Warning: This action cannot be undone.
+</Callout>
+```
+
+### Danger Callout
+
+Use for critical errors or dangerous actions.
+
+<div className="preview">
+  <Callout variant="danger">
+    Error: This is a critical error that needs immediate attention.
+  </Callout>
+</div>
+
+```tsx
+<Callout variant="danger">
+  Error: This is a critical error that needs immediate attention.
+</Callout>
+```
+
+### Success Callout
+
+Use for success messages.
+
+<div className="preview">
+  <Callout variant="success">
+    Success! Your changes have been saved.
+  </Callout>
+</div>
+
+```tsx
+<Callout variant="success">
+  Success! Your changes have been saved.
+</Callout>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | The callout content |
+| `variant` | `"info" \| "warning" \| "danger" \| "success"` | `"info"` | The callout style variant |
+| `className` | `string` | - | Additional CSS classes |

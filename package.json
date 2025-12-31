@@ -1,0 +1,40 @@
+{
+  "name": "mdx-ui",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "name": "ida02pingala06",
+    "url": "https://github.com/ida02pingala06"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ida02pingala06/mdx-ui.git"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "www:dev": "pnpm --filter=@mdx-ui/www dev",
+    "www:build": "pnpm --filter=@mdx-ui/www build",
+    "cli:dev": "pnpm --filter=@mdx-ui/cli dev",
+    "cli:build": "pnpm --filter=@mdx-ui/cli build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "packageManager": "pnpm@9.0.6",
+  "devDependencies": {
+    "@types/node": "^20.11.27",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.22",
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.5",
+    "typescript": "^5.5.3"
+  }
+}

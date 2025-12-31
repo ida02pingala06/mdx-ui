@@ -1,0 +1,91 @@
+{
+  "$schema": "./schema.json",
+  "components": [
+    {
+      "name": "blockquote",
+      "type": "mdx",
+      "description": "Styled quote blocks with optional citation",
+      "files": ["mdx/blockquote.json"]
+    },
+    {
+      "name": "callout",
+      "type": "mdx",
+      "description": "Alert boxes for important information with variants",
+      "files": ["mdx/callout.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "code-block",
+      "type": "mdx",
+      "description": "Syntax highlighted code blocks with title and line numbers",
+      "files": ["mdx/code-block.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "emphasis",
+      "type": "mdx",
+      "description": "Text emphasis components for bold (strong) and italic (em) styling",
+      "files": ["mdx/emphasis.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "headings",
+      "type": "mdx",
+      "description": "Markdown headings (H1-H6) with auto-generated anchor links for navigation",
+      "files": ["mdx/headings.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "horizontal-rule",
+      "type": "mdx",
+      "description": "Divider lines with multiple styles (default, dashed, dotted, gradient)",
+      "files": ["mdx/horizontal-rule.json"]
+    },
+    {
+      "name": "image",
+      "type": "mdx",
+      "description": "Images with optional captions",
+      "files": ["mdx/image.json"]
+    },
+    {
+      "name": "inline-code",
+      "type": "mdx",
+      "description": "Inline code component for displaying code snippets within text",
+      "files": ["mdx/inline-code.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "list",
+      "type": "mdx",
+      "description": "Styled ordered and unordered lists with list items",
+      "files": ["mdx/list.json"]
+    },
+    {
+      "name": "paragraph",
+      "type": "mdx",
+      "description": "Standard text paragraph component with proper spacing and typography",
+      "files": ["mdx/paragraph.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "steps",
+      "type": "mdx",
+      "description": "Numbered step-by-step guides with visual indicators",
+      "files": ["mdx/steps.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "tabs",
+      "type": "mdx",
+      "description": "Tabbed content sections with state management",
+      "files": ["mdx/tabs.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "utils",
+      "type": "utility",
+      "description": "Utility functions for className merging (cn)",
+      "files": ["mdx/utils.json"]
+    }
+  ]
+}

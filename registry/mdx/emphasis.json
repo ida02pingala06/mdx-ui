@@ -1,0 +1,14 @@
+{
+  "name": "emphasis",
+  "type": "mdx",
+  "description": "Text emphasis components for bold (strong) and italic (em) styling",
+  "files": [
+    {
+      "path": "emphasis.tsx",
+      "type": "component",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface EmphasisProps extends React.HTMLAttributes<HTMLElement> {\n  children: React.ReactNode\n}\n\nexport function Strong({ children, className, ...props }: EmphasisProps) {\n  return (\n    <strong\n      className={cn(\"font-semibold text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </strong>\n  )\n}\n\nexport function Em({ children, className, ...props }: EmphasisProps) {\n  return (\n    <em\n      className={cn(\"italic text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </em>\n  )\n}\n"
+    }
+  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"]
+}

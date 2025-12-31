@@ -1,0 +1,32 @@
+{
+  "title": "Blog",
+  "path": "/blog",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "2025"
+    },
+    {
+      "title": "Announcing MDX UI v1.0",
+      "path": "/blog/2025/01/announcing-v1",
+      "date": "January 31, 2025",
+      "author": "MDX UI Team"
+    },
+    {
+      "title": "Building Better Documentation",
+      "path": "/blog/2025/01/building-better-docs",
+      "date": "January 15, 2025",
+      "author": "MDX UI Team"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "2024"
+    },
+    {
+      "title": "Introducing MDX UI",
+      "path": "/blog/2024/12/introducing-mdx-ui",
+      "date": "December 15, 2024",
+      "author": "MDX UI Team"
+    }
+  ]
+}

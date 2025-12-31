@@ -1,0 +1,14 @@
+{
+  "name": "paragraph",
+  "type": "mdx",
+  "description": "Standard text paragraph component with proper spacing and typography",
+  "files": [
+    {
+      "path": "paragraph.tsx",
+      "type": "component",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface ParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {\n  children: React.ReactNode\n}\n\nexport function P({ children, className, ...props }: ParagraphProps) {\n  return (\n    <p\n      className={cn(\n        \"leading-7 text-foreground\",\n        \"[&:not(:first-child)]:mt-6\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </p>\n  )\n}\n"
+    }
+  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"]
+}

@@ -1,0 +1,163 @@
+---
+title: Heading
+description: Flexible and reusable heading component with variant support
+component: heading
+published: true
+dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
+registryDependencies: ["utils"]
+---
+
+import { Heading, H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading"
+
+## Installation
+
+```bash
+npx mdx-ui add heading
+```
+
+## Usage
+
+The Heading component provides a flexible and reusable way to create headings with consistent styling. It uses `class-variance-authority` for variant management, making it easy to customize.
+
+### Basic Example
+
+<div className="preview">
+  <div className="space-y-4">
+    <H2>This is an H2 heading</H2>
+    <H3>This is an H3 heading</H3>
+    <H4>This is an H4 heading</H4>
+  </div>
+</div>
+
+```tsx
+import { H2, H3, H4 } from "@/components/mdx/heading"
+
+<H2>This is an H2 heading</H2>
+<H3>This is an H3 heading</H3>
+<H4>This is an H4 heading</H4>
+```
+
+### Using the Base Heading Component
+
+The base `Heading` component allows you to specify the semantic HTML element and styling level separately:
+
+<div className="preview">
+  <div className="space-y-4">
+    <Heading as="h2" level="h2">Standard H2</Heading>
+    <Heading as="h3" level="h2">H3 styled as H2</Heading>
+    <Heading as="div" level="h3">Div styled as H3</Heading>
+  </div>
+</div>
+
+```tsx
+import { Heading } from "@/components/mdx/heading"
+
+// Standard usage - semantic element matches style
+<Heading as="h2" level="h2">Standard H2</Heading>
+
+// Different semantic element and style
+<Heading as="h3" level="h2">H3 styled as H2</Heading>
+
+// Non-semantic element
+<Heading as="div" level="h3">Div styled as H3</Heading>
+```
+
+## All Heading Levels
+
+<div className="preview">
+  <div className="space-y-6">
+    <H1>Heading Level 1</H1>
+    <H2>Heading Level 2</H2>
+    <H3>Heading Level 3</H3>
+    <H4>Heading Level 4</H4>
+    <H5>Heading Level 5</H5>
+    <H6>Heading Level 6</H6>
+  </div>
+</div>
+
+```tsx
+<H1>Heading Level 1</H1>
+<H2>Heading Level 2</H2>
+<H3>Heading Level 3</H3>
+<H4>Heading Level 4</H4>
+<H5>Heading Level 5</H5>
+<H6>Heading Level 6</H6>
+```
+
+## Custom Styling
+
+You can pass custom className to override or extend the default styles:
+
+<div className="preview">
+  <div className="space-y-4">
+    <H2 className="text-blue-600">Blue heading</H2>
+    <H3 className="italic">Italic heading</H3>
+    <H4 className="border-b pb-2">Heading with border</H4>
+  </div>
+</div>
+
+```tsx
+<H2 className="text-blue-600">Blue heading</H2>
+<H3 className="italic">Italic heading</H3>
+<H4 className="border-b pb-2">Heading with border</H4>
+```
+
+## Props
+
+### Heading
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `as` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"` | The HTML element to render |
+| `level` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"` | The visual styling level |
+| `className` | `string` | - | Additional CSS classes |
+| `id` | `string` | - | Element ID for anchor links |
+| `children` | `React.ReactNode` | - | Heading content |
+
+All standard HTML heading attributes are also supported.
+
+### H1, H2, H3, H4, H5, H6
+
+These convenience components accept the same props as `Heading`, except `as` and `level` are pre-set.
+
+## Styling Variants
+
+The component uses `class-variance-authority` for consistent variant styling:
+
+- **h1**: `text-4xl font-bold lg:text-5xl`
+- **h2**: `text-2xl font-semibold mt-12`
+- **h3**: `text-xl font-semibold mt-8`
+- **h4**: `text-base font-medium mt-6`
+- **h5**: `text-base font-medium mt-6`
+- **h6**: `text-sm font-medium mt-6`
+
+All headings include `scroll-m-28 tracking-tight` for better scroll behavior and typography.
+
+## When to Separate Semantics from Style
+
+Use the base `Heading` component when you need different semantic HTML from the visual style:
+
+```tsx
+// Good for SEO - h1 semantically, but styled smaller
+<Heading as="h1" level="h3">Page Title in Sidebar</Heading>
+
+// Accessibility - keeping heading hierarchy while matching design
+<Heading as="h4" level="h2">Visually Prominent Subsection</Heading>
+```
+
+## Accessibility
+
+- Use headings in hierarchical order (h1 → h2 → h3, etc.)
+- Don't skip heading levels for visual styling - use the `level` prop instead
+- Ensure headings accurately describe the content they introduce
+- One h1 per page for better SEO and screen reader navigation
+
+## Integration with MDX
+
+The heading components are automatically used for all Markdown headings in MDX files:
+
+```markdown
+# This renders as H1
+## This renders as H2
+### This renders as H3
+```

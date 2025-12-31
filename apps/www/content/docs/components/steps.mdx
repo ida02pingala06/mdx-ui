@@ -1,0 +1,97 @@
+---
+title: Steps
+description: Numbered step-by-step guides with visual indicators
+component: steps
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+import { Steps, Step } from "@/components/mdx/steps"
+
+## Installation
+
+```bash
+npx mdx-ui add steps
+```
+
+## Usage
+
+```tsx
+import { Steps, Step } from "@/components/mdx/steps"
+
+<Steps>
+  <Step>First step</Step>
+  <Step>Second step</Step>
+  <Step>Third step</Step>
+</Steps>
+```
+
+## Examples
+
+### Basic Steps
+
+<div className="preview">
+  <Steps>
+    <Step>Create a new Next.js project</Step>
+    <Step>Install the required dependencies</Step>
+    <Step>Configure your tailwind.config.ts</Step>
+    <Step>Start building!</Step>
+  </Steps>
+</div>
+
+```tsx
+<Steps>
+  <Step>Create a new Next.js project</Step>
+  <Step>Install the required dependencies</Step>
+  <Step>Configure your tailwind.config.ts</Step>
+  <Step>Start building!</Step>
+</Steps>
+```
+
+### Steps with Rich Content
+
+You can include any content inside steps, including code blocks and lists.
+
+<div className="preview">
+  <Steps>
+    <Step>
+      **Install dependencies**
+
+      Run the following command:
+
+      ```bash
+      npm install mdx-ui
+      ```
+    </Step>
+    <Step>
+      **Configure your project**
+
+      Update your configuration files:
+      - Add Tailwind CSS
+      - Configure MDX
+      - Set up TypeScript
+    </Step>
+    <Step>
+      **Start developing**
+
+      You're ready to go!
+    </Step>
+  </Steps>
+</div>
+
+## Props
+
+### Steps
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Step components |
+| `className` | `string` | - | Additional CSS classes |
+
+### Step
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | The step content |
+| `className` | `string` | - | Additional CSS classes |

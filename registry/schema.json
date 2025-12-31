@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "files"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the component"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["mdx", "ui", "utility"],
+      "description": "The type of component"
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of what the component does"
+    },
+    "files": {
+      "type": "array",
+      "description": "Files that make up this component",
+      "items": {
+        "type": "object",
+        "required": ["path", "content"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The file path relative to the component directory"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["component", "utility", "hook", "lib"],
+            "description": "The type of file"
+          },
+          "content": {
+            "type": "string",
+            "description": "The full content of the file"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "NPM dependencies required by this component",
+      "items": {
+        "type": "string"
+      }
+    },
+    "registryDependencies": {
+      "type": "array",
+      "description": "Other components from the registry that this component depends on",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

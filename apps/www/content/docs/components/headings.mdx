@@ -1,0 +1,87 @@
+---
+title: Headings
+description: Display all heading levels with proper Markdown syntax
+component: headings
+published: true
+---
+
+import { Headings } from "@/components/mdx/headings"
+
+## Installation
+
+```bash
+npx mdx-ui add headings
+```
+
+## Usage
+
+The Headings component displays all six heading levels (H1-H6) with their corresponding Markdown syntax, making it easy to reference heading styles in your documentation.
+
+<div className="preview">
+  <Headings />
+</div>
+
+```mdx
+import { Headings } from "@/components/mdx/headings"
+
+<Headings />
+```
+
+## Heading Syntax
+
+### Level 1 Heading
+Use a single `#` for the largest heading:
+
+```markdown
+# Heading level 1
+```
+
+### Level 2 Heading
+Use two `##` for second-level headings:
+
+```markdown
+## Heading level 2
+```
+
+### Level 3 Heading
+Use three `###` for third-level headings:
+
+```markdown
+### Heading level 3
+```
+
+### Level 4 Heading
+Use four `####` for fourth-level headings:
+
+```markdown
+#### Heading level 4
+```
+
+### Level 5 Heading
+Use five `#####` for fifth-level headings:
+
+```markdown
+##### Heading level 5
+```
+
+### Level 6 Heading
+Use six `######` for the smallest heading:
+
+```markdown
+###### Heading level 6
+```
+
+## Best Practices
+
+- **Use heading levels hierarchically**: Don't skip levels (e.g., don't jump from H1 to H3)
+- **One H1 per page**: Use only one level-1 heading per document
+- **Descriptive headings**: Make headings clear and descriptive
+- **Keep them concise**: Aim for short, scannable headings
+- **Use for structure**: Headings create document outline and improve accessibility
+
+## Accessibility
+
+Properly structured headings are crucial for:
+- **Screen reader navigation**: Users can jump between headings
+- **SEO**: Search engines use headings to understand content structure
+- **Document outline**: Creates a logical hierarchy for your content

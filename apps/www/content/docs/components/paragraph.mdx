@@ -1,0 +1,301 @@
+---
+title: Paragraph
+description: Flexible paragraph component with multiple variants and alignment options
+component: paragraph
+published: true
+dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
+registryDependencies: ["utils"]
+---
+
+import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/paragraph"
+
+## Installation
+
+```bash
+npx mdx-ui add paragraph
+```
+
+## Usage
+
+The Paragraph component provides a flexible way to create text paragraphs with different styles and alignments. It uses `class-variance-authority` for variant management.
+
+### Default Paragraph
+
+<div className="preview">
+  <Paragraph>
+    This is a default paragraph with standard text sizing and spacing. It provides good readability
+    for body content with proper line height and margins.
+  </Paragraph>
+</div>
+
+```tsx
+<Paragraph>
+  This is a default paragraph with standard text sizing and spacing.
+</Paragraph>
+```
+
+## Variants
+
+### Lead Paragraph
+
+Use lead paragraphs to create emphasis at the beginning of an article or section.
+
+<div className="preview">
+  <Lead>
+    This is a lead paragraph that draws attention with larger text and muted color.
+    Perfect for introductions and opening statements.
+  </Lead>
+</div>
+
+```tsx
+<Lead>
+  This is a lead paragraph that draws attention with larger text.
+</Lead>
+```
+
+### Intro Paragraph
+
+Similar to lead but with slightly different styling for introductory content.
+
+<div className="preview">
+  <Intro>
+    This is an intro paragraph designed for section introductions. It has comfortable
+    spacing and slightly larger text for improved readability.
+  </Intro>
+</div>
+
+```tsx
+<Intro>
+  This is an intro paragraph designed for section introductions.
+</Intro>
+```
+
+### Large Paragraph
+
+For emphasized text that needs more prominence.
+
+<div className="preview">
+  <Large>
+    This is a large paragraph with bold text for important statements.
+  </Large>
+</div>
+
+```tsx
+<Large>
+  This is a large paragraph with bold text for important statements.
+</Large>
+```
+
+### Small Paragraph
+
+For fine print, captions, or supplementary information.
+
+<div className="preview">
+  <Small>
+    This is a small paragraph for captions, fine print, or secondary information.
+  </Small>
+</div>
+
+```tsx
+<Small>
+  This is a small paragraph for captions or fine print.
+</Small>
+```
+
+### Muted Paragraph
+
+For de-emphasized text or supplementary content.
+
+<div className="preview">
+  <Muted>
+    This is a muted paragraph with reduced visual emphasis. Great for secondary
+    information that supports the main content.
+  </Muted>
+</div>
+
+```tsx
+<Muted>
+  This is a muted paragraph with reduced visual emphasis.
+</Muted>
+```
+
+## Alignment
+
+Control text alignment with the `align` prop.
+
+<div className="preview">
+  <div className="space-y-4">
+    <Paragraph align="left">
+      This paragraph is aligned to the left (default alignment).
+    </Paragraph>
+    <Paragraph align="center">
+      This paragraph is centered.
+    </Paragraph>
+    <Paragraph align="right">
+      This paragraph is aligned to the right.
+    </Paragraph>
+    <Paragraph align="justify">
+      This paragraph is justified, meaning the text is spread out to align with both left and right margins. This creates a clean, uniform edge on both sides.
+    </Paragraph>
+  </div>
+</div>
+
+```tsx
+<Paragraph align="left">Left aligned (default)</Paragraph>
+<Paragraph align="center">Center aligned</Paragraph>
+<Paragraph align="right">Right aligned</Paragraph>
+<Paragraph align="justify">Justified text</Paragraph>
+```
+
+## Custom Styling
+
+Combine variants with custom classes for unique styles.
+
+<div className="preview">
+  <div className="space-y-4">
+    <Paragraph className="text-blue-600">
+      Custom blue paragraph
+    </Paragraph>
+    <Lead className="italic">
+      Italic lead paragraph
+    </Lead>
+    <Paragraph variant="muted" className="border-l-4 border-muted-foreground pl-4">
+      Paragraph with custom border
+    </Paragraph>
+  </div>
+</div>
+
+```tsx
+<Paragraph className="text-blue-600">
+  Custom blue paragraph
+</Paragraph>
+
+<Lead className="italic">
+  Italic lead paragraph
+</Lead>
+
+<Paragraph variant="muted" className="border-l-4 pl-4">
+  Paragraph with custom border
+</Paragraph>
+```
+
+## Using Different Elements
+
+Change the HTML element while maintaining paragraph styling.
+
+<div className="preview">
+  <div className="space-y-4">
+    <Paragraph as="p">Rendered as &lt;p&gt; tag (default)</Paragraph>
+    <Paragraph as="div">Rendered as &lt;div&gt; tag</Paragraph>
+    <Paragraph as="span">Rendered as &lt;span&gt; tag</Paragraph>
+  </div>
+</div>
+
+```tsx
+<Paragraph as="p">Rendered as p tag (default)</Paragraph>
+<Paragraph as="div">Rendered as div tag</Paragraph>
+<Paragraph as="span">Rendered as span tag</Paragraph>
+```
+
+## Combining Variants
+
+Mix and match variants and alignment for custom combinations.
+
+<div className="preview">
+  <div className="space-y-4">
+    <Paragraph variant="lead" align="center">
+      Centered lead paragraph
+    </Paragraph>
+    <Paragraph variant="large" align="right">
+      Right-aligned large text
+    </Paragraph>
+    <Paragraph variant="intro" align="justify">
+      This is a justified intro paragraph that demonstrates how variants can be combined with alignment options to create exactly the style you need.
+    </Paragraph>
+  </div>
+</div>
+
+```tsx
+<Paragraph variant="lead" align="center">
+  Centered lead paragraph
+</Paragraph>
+
+<Paragraph variant="large" align="right">
+  Right-aligned large text
+</Paragraph>
+
+<Paragraph variant="intro" align="justify">
+  Justified intro paragraph
+</Paragraph>
+```
+
+## Props
+
+### Paragraph
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `"default" \| "lead" \| "intro" \| "large" \| "small" \| "muted"` | `"default"` | The paragraph style variant |
+| `align` | `"left" \| "center" \| "right" \| "justify"` | `"left"` | Text alignment |
+| `as` | `"p" \| "div" \| "span"` | `"p"` | The HTML element to render |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `React.ReactNode` | - | Paragraph content |
+
+All standard HTML paragraph attributes are also supported.
+
+### Convenience Components
+
+These components are pre-configured versions of `Paragraph` with specific variants:
+
+- **Lead**: `variant="lead"`
+- **Intro**: `variant="intro"`
+- **Large**: `variant="large"`
+- **Small**: `variant="small"`
+- **Muted**: `variant="muted"`
+
+All convenience components accept the same props as `Paragraph` except `variant`.
+
+## Best Practices
+
+### Use Semantic HTML
+```tsx
+// ✅ Good - semantic HTML
+<Paragraph>Body text</Paragraph>
+
+// ❌ Avoid - unless you need non-semantic element
+<Paragraph as="div">Body text</Paragraph>
+```
+
+### Consistent Spacing
+```tsx
+// ✅ Good - let the component handle spacing
+<Paragraph>First paragraph</Paragraph>
+<Paragraph>Second paragraph</Paragraph>
+
+// ❌ Avoid - manual spacing
+<Paragraph className="mb-6">First paragraph</Paragraph>
+<Paragraph>Second paragraph</Paragraph>
+```
+
+### Clear Hierarchy
+```tsx
+// ✅ Good - clear visual hierarchy
+<Lead>Important introduction</Lead>
+<Paragraph>Supporting details</Paragraph>
+<Muted>Additional context</Muted>
+
+// ❌ Confusing - mixed hierarchy
+<Small>Important introduction</Small>
+<Large>Additional context</Large>
+```
+
+## Accessibility
+
+- Use appropriate HTML elements (`<p>` for paragraphs)
+- Maintain good contrast ratios for muted variants
+- Ensure text alignment doesn't harm readability (avoid full justification for narrow columns)
+- Keep line length comfortable (45-75 characters for optimal readability)
+
+## Playground
+
+Try different combinations of variants, alignments, and custom styles to see what works for your content.

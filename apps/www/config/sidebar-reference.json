@@ -1,0 +1,108 @@
+{
+  "title": "API Reference",
+  "path": "/reference",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "mdx-ui CLI"
+    },
+    {
+      "title": "Overview",
+      "path": "/reference/cli"
+    },
+    {
+      "title": "Commands",
+      "path": "/reference/cli/commands",
+      "routes": [
+        {
+          "title": "init",
+          "path": "/reference/cli/init"
+        },
+        {
+          "title": "add",
+          "path": "/reference/cli/add"
+        },
+        {
+          "title": "list",
+          "path": "/reference/cli/list"
+        }
+      ]
+    },
+    {
+      "title": "Configuration",
+      "path": "/reference/cli/configuration"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Typography Components"
+    },
+    {
+      "title": "Blockquote",
+      "path": "/reference/components/blockquote"
+    },
+    {
+      "title": "Emphasis",
+      "path": "/reference/components/emphasis"
+    },
+    {
+      "title": "Headings",
+      "path": "/reference/components/headings"
+    },
+    {
+      "title": "Inline Code",
+      "path": "/reference/components/inline-code"
+    },
+    {
+      "title": "List",
+      "path": "/reference/components/list"
+    },
+    {
+      "title": "Paragraph",
+      "path": "/reference/components/paragraph"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Code Components"
+    },
+    {
+      "title": "Code Block",
+      "path": "/reference/components/code-block"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Interactive Components"
+    },
+    {
+      "title": "Callout",
+      "path": "/reference/components/callout"
+    },
+    {
+      "title": "Steps",
+      "path": "/reference/components/steps"
+    },
+    {
+      "title": "Tabs",
+      "path": "/reference/components/tabs"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Media & Layout"
+    },
+    {
+      "title": "Horizontal Rule",
+      "path": "/reference/components/horizontal-rule"
+    },
+    {
+      "title": "Image",
+      "path": "/reference/components/image"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Utilities"
+    },
+    {
+      "title": "cn (className utility)",
+      "path": "/reference/utilities/cn"
+    }
+  ]
+}

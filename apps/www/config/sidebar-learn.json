@@ -1,0 +1,136 @@
+{
+  "title": "Learn",
+  "path": "/learn",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Get Started"
+    },
+    {
+      "title": "Quick Start",
+      "path": "/learn"
+    },
+    {
+      "title": "Installation",
+      "path": "/learn/installation",
+      "routes": [
+        {
+          "title": "Next.js",
+          "path": "/learn/installation/next-js"
+        },
+        {
+          "title": "Vite",
+          "path": "/learn/installation/vite"
+        },
+        {
+          "title": "Gatsby",
+          "path": "/learn/installation/gatsby"
+        }
+      ]
+    },
+    {
+      "title": "Tutorial: Your First Component",
+      "path": "/learn/tutorial-first-component"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Learn MDX UI"
+    },
+    {
+      "title": "Thinking in Components",
+      "path": "/learn/thinking-in-components"
+    },
+    {
+      "title": "Adding Components",
+      "path": "/learn/adding-components",
+      "routes": [
+        {
+          "title": "Using the CLI",
+          "path": "/learn/adding-components/using-cli"
+        },
+        {
+          "title": "Manual Installation",
+          "path": "/learn/adding-components/manual"
+        }
+      ]
+    },
+    {
+      "title": "Customizing Components",
+      "path": "/learn/customizing-components",
+      "routes": [
+        {
+          "title": "Styling with Tailwind",
+          "path": "/learn/customizing-components/tailwind"
+        },
+        {
+          "title": "Dark Mode",
+          "path": "/learn/customizing-components/dark-mode"
+        },
+        {
+          "title": "Custom Variants",
+          "path": "/learn/customizing-components/variants"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Building Your Docs"
+    },
+    {
+      "title": "Writing MDX",
+      "path": "/learn/writing-mdx",
+      "routes": [
+        {
+          "title": "MDX Basics",
+          "path": "/learn/writing-mdx/basics"
+        },
+        {
+          "title": "Using Components in MDX",
+          "path": "/learn/writing-mdx/components"
+        },
+        {
+          "title": "Frontmatter",
+          "path": "/learn/writing-mdx/frontmatter"
+        }
+      ]
+    },
+    {
+      "title": "Organizing Your Docs",
+      "path": "/learn/organizing-docs"
+    },
+    {
+      "title": "Navigation & Routing",
+      "path": "/learn/navigation-routing"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Advanced"
+    },
+    {
+      "title": "Custom Components",
+      "path": "/learn/custom-components"
+    },
+    {
+      "title": "MDX Plugins",
+      "path": "/learn/mdx-plugins"
+    },
+    {
+      "title": "Deploying",
+      "path": "/learn/deploying",
+      "routes": [
+        {
+          "title": "Vercel",
+          "path": "/learn/deploying/vercel"
+        },
+        {
+          "title": "Netlify",
+          "path": "/learn/deploying/netlify"
+        },
+        {
+          "title": "GitHub Pages",
+          "path": "/learn/deploying/github-pages"
+        }
+      ]
+    }
+  ]
+}

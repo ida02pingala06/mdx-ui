@@ -1,0 +1,50 @@
+{
+  "name": "@mdx-ui/cli",
+  "version": "0.0.1",
+  "description": "Add MDX components to your project",
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "name": "ida02pingala06",
+    "url": "https://github.com/ida02pingala06"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ida02pingala06/mdx-ui.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/ida02pingala06/mdx-ui#readme",
+  "bugs": {
+    "url": "https://github.com/ida02pingala06/mdx-ui/issues"
+  },
+  "exports": "./dist/index.js",
+  "bin": {
+    "mdx-ui": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "prompts": "^2.4.2",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.2.0",
+    "axios": "^1.6.7",
+    "zod": "^3.22.4",
+    "cosmiconfig": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.2",
+    "typescript": "^5.5.3"
+  }
+}
