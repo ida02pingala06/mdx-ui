@@ -92,7 +92,7 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
           />
         </button>
 
-        {isExpanded && (
+        {isExpanded && route.routes && (
           <div className={cn("ml-0 space-y-1", level === 0 && "ml-2")}>
             <SidebarRouteTree
               routes={route.routes}
