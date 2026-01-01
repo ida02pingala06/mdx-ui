@@ -1,0 +1,182 @@
+---
+title: Integration Guides
+description: Learn how to integrate MDX UI components with your project
+published: true
+---
+
+## Overview
+
+MDX UI provides beautifully designed components for your MDX content. After installing components with the CLI, you need to set up an MDX renderer to use them in your markdown files.
+
+## Prerequisites
+
+Before integrating MDX UI, make sure you have:
+
+1. **Installed components** using the CLI
+2. **Tailwind CSS** configured in your project
+3. **A Next.js project** (or other React framework)
+
+## Choosing an MDX Renderer
+
+MDX UI works with any MDX renderer. Choose the one that fits your needs:
+
+### next-mdx-remote
+
+**Best for:** Flexible content sources, blogs, CMS integration
+
+- Load MDX from anywhere (files, CMS, database)
+- Server-side rendering
+- Easy to set up
+- No build-time processing
+
+[View Guide →](/docs/integration/nextjs-mdx-remote)
+
+### Contentlayer
+
+**Best for:** Type-safe content, large sites, content validation
+
+- Full TypeScript support
+- Content validation
+- Great developer experience
+- Automatic type generation
+
+[View Guide →](/docs/integration/nextjs-contentlayer)
+
+### @next/mdx
+
+**Best for:** MDX-first sites, simple blogs, documentation
+
+- Official Next.js plugin
+- MDX files as pages
+- Simplest setup
+- Best Next.js integration
+
+[View Guide →](/docs/integration/nextjs-mdx)
+
+## Quick Start
+
+Regardless of which renderer you choose, the integration follows the same pattern:
+
+### 1. Install Components
+
+```bash
+npx @suryaravikumar/mdx-ui init
+npx @suryaravikumar/mdx-ui add callout headings paragraph
+```
+
+### 2. Create Component Mappings
+
+```tsx
+// components/mdx-components.tsx
+import { H1, H2, H3 } from "@/components/mdx-ui/headings"
+import { P } from "@/components/mdx-ui/paragraph"
+import { Callout } from "@/components/mdx-ui/callout"
+
+export const mdxComponents = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  p: P,
+  Callout,
+}
+```
+
+### 3. Use in Your MDX
+
+```mdx
+# Hello World
+
+This uses the custom H1 component.
+
+<Callout variant="info">
+  Custom components work too!
+</Callout>
+```
+
+## Comparison
+
+| Feature | next-mdx-remote | contentlayer | @next/mdx |
+|---------|----------------|--------------|-----------|
+| Setup Complexity | Low | Medium | Low |
+| TypeScript Support | Basic | Excellent | Good |
+| Content Validation | No | Yes | No |
+| Remote Content | Yes | No | With extra setup |
+| Build Time | Fast | Slower (first build) | Fast |
+| Hot Reload | Yes | Yes | Yes |
+| Framework | Any | Next.js focused | Next.js only |
+
+## Component Mappings
+
+All integration approaches require mapping MDX elements to your components. This is done through a component mappings file.
+
+[Learn More →](/docs/integration/component-mappings)
+
+## Framework-Specific Guides
+
+### React Frameworks
+
+- [Next.js + next-mdx-remote](/docs/integration/nextjs-mdx-remote)
+- [Next.js + contentlayer](/docs/integration/nextjs-contentlayer)
+- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
+
+### Coming Soon
+
+- Remix integration
+- Astro integration
+- Gatsby integration
+
+## Example Projects
+
+Check out complete working examples:
+
+- [test-app](https://github.com/ida02pingala06/mdx-ui/tree/main/test-app) - Next.js with next-mdx-remote
+- [mdx-ui documentation](https://github.com/ida02pingala06/mdx-ui/tree/main/apps/www) - Next.js with contentlayer
+
+## Troubleshooting
+
+### Components not rendering
+
+1. Verify you've created the component mappings file
+2. Check that you're passing `components={mdxComponents}` to your MDX renderer
+3. Ensure component names match (case-sensitive)
+
+### Styling not applied
+
+1. Make sure Tailwind CSS is installed
+2. Configure Tailwind to scan your component directory:
+
+```js
+// tailwind.config.ts
+export default {
+  content: [
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+  ],
+}
+```
+
+### TypeScript errors
+
+Add path aliases to `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+## Need Help?
+
+- [Browse Components](/components)
+- [View Examples](https://github.com/ida02pingala06/mdx-ui/tree/main/test-app)
+- [Report Issues](https://github.com/ida02pingala06/mdx-ui/issues)
+
+## Next Steps
+
+1. Choose your MDX renderer
+2. Follow the integration guide
+3. Start building with MDX UI!

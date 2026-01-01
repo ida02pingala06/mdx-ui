@@ -1,0 +1,251 @@
+---
+title: Next.js + next-mdx-remote
+description: Integrate MDX UI with Next.js using next-mdx-remote
+published: true
+---
+
+## Overview
+
+[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) is a flexible MDX renderer for Next.js that allows you to load MDX content from any source (files, CMS, database).
+
+**Best for:** Blogs, documentation sites, content from external sources
+
+## Installation
+
+### 1. Install Dependencies
+
+```bash
+npm install next-mdx-remote gray-matter
+```
+
+### 2. Initialize MDX UI
+
+```bash
+npx @suryaravikumar/mdx-ui init
+```
+
+### 3. Install Components
+
+```bash
+npx @suryaravikumar/mdx-ui add headings paragraph callout
+```
+
+## Setup
+
+### 1. Create Component Mappings
+
+Create `components/mdx-components.tsx`:
+
+```tsx
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings"
+import { P } from "@/components/mdx-ui/paragraph"
+import { Callout } from "@/components/mdx-ui/callout"
+
+export const mdxComponents = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  p: P,
+  Callout,
+}
+```
+
+### 2. Create Content Directory
+
+```bash
+mkdir -p content/blog
+```
+
+Create `content/blog/hello-world.md`:
+
+```markdown
+---
+title: Hello World
+date: 2024-01-01
+---
+
+# Hello World
+
+This is my first blog post using MDX UI components.
+
+<Callout variant="info" title="Pro Tip">
+  You can use custom components in markdown files!
+</Callout>
+
+## Features
+
+- Beautiful typography
+- Custom components
+- Easy to maintain
+```
+
+### 3. Create Blog Post Page
+
+Create `app/blog/[slug]/page.tsx`:
+
+```tsx
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/components/mdx-components'
+
+// Get all post slugs for static generation
+export async function generateStaticParams() {
+  const postsDirectory = path.join(process.cwd(), 'content/blog')
+  const filenames = fs.readdirSync(postsDirectory)
+
+  return filenames.map((filename) => ({
+    slug: filename.replace(/\.mdx?$/, ''),
+  }))
+}
+
+// Get post data by slug
+async function getPost(slug: string) {
+  const filePath = path.join(process.cwd(), 'content/blog', `${slug}.md`)
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const { content, data } = matter(fileContents)
+
+  return {
+    slug,
+    content,
+    frontmatter: data,
+  }
+}
+
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = await getPost(params.slug)
+
+  return (
+    <article className="prose dark:prose-invert max-w-4xl mx-auto px-4 py-8">
+      <header className="mb-8">
+        <h1 className="mb-2">{post.frontmatter.title}</h1>
+        <time className="text-muted-foreground">
+          {new Date(post.frontmatter.date).toLocaleDateString()}
+        </time>
+      </header>
+
+      <MDXRemote
+        source={post.content}
+        components={mdxComponents}
+      />
+    </article>
+  )
+}
+```
+
+## Advanced Configuration
+
+### Custom Remark/Rehype Plugins
+
+```tsx
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+
+const options = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+    ],
+  },
+}
+
+<MDXRemote
+  source={content}
+  components={mdxComponents}
+  options={options}
+/>
+```
+
+### Table of Contents Generation
+
+```tsx
+import { compileMDX } from 'next-mdx-remote/rsc'
+
+async function getPostWithToc(slug: string) {
+  const filePath = path.join(process.cwd(), 'content/blog', `${slug}.md`)
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+
+  const { content: compiledContent, frontmatter } = await compileMDX({
+    source: fileContents,
+    components: mdxComponents,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        rehypePlugins: [
+          rehypeSlug,
+          () => (tree) => {
+            // Extract headings for TOC
+            const toc: any[] = []
+            visit(tree, 'element', (node: any) => {
+              if (['h2', 'h3'].includes(node.tagName)) {
+                toc.push({
+                  level: node.tagName,
+                  id: node.properties.id,
+                  text: node.children[0]?.value || '',
+                })
+              }
+            })
+            return toc
+          },
+        ],
+      },
+    },
+  })
+
+  return { content: compiledContent, frontmatter, toc }
+}
+```
+
+## Complete Example
+
+See the [test-app](/test-app) directory in the mdx-ui repository for a complete working example with multiple rendering approaches.
+
+## Troubleshooting
+
+### "Cannot find module" errors
+
+Make sure your `tsconfig.json` has the correct path aliases:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+### Components not rendering
+
+1. Verify components are imported in `mdx-components.tsx`
+2. Check that you're passing `components={mdxComponents}` to `MDXRemote`
+3. Ensure component names match (case-sensitive)
+
+### Styling not applied
+
+MDX UI components use Tailwind CSS. Make sure:
+
+1. Tailwind is installed and configured
+2. You've added the component directory to your `tailwind.config.ts`:
+
+```js
+content: [
+  './app/**/*.{ts,tsx}',
+  './components/**/*.{ts,tsx}',
+],
+```
+
+## Next Steps
+
+- [Component Mappings](/docs/integration/component-mappings)
+- [Browse Components](/components)
+- [Try contentlayer](/docs/integration/nextjs-contentlayer)

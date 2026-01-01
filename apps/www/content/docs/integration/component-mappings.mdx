@@ -1,0 +1,151 @@
+---
+title: Component Mappings
+description: Learn how to create component mappings for MDX rendering
+published: true
+---
+
+## Overview
+
+After installing MDX UI components with the CLI, you need to map them to MDX elements. This guide shows you how to create a component mappings file that works with any MDX renderer.
+
+## What are Component Mappings?
+
+Component mappings tell your MDX renderer which React components to use for markdown elements. For example:
+
+- `h1` → Your custom `H1` component
+- `p` → Your custom `P` component
+- `Callout` → Your custom `Callout` component
+
+## Creating the Mappings File
+
+Create a file at `components/mdx-components.tsx`:
+
+```tsx
+// components/mdx-components.tsx
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings"
+import { P } from "@/components/mdx-ui/paragraph"
+import { Callout } from "@/components/mdx-ui/callout"
+import { Steps } from "@/components/mdx-ui/steps"
+import { InlineCode } from "@/components/mdx-ui/inline-code"
+import { CodeBlock } from "@/components/mdx-ui/code-block"
+import { Blockquote } from "@/components/mdx-ui/blockquote"
+import { List, ListItem } from "@/components/mdx-ui/list"
+import { Tabs } from "@/components/mdx-ui/tabs"
+import { Image } from "@/components/mdx-ui/image"
+import { HorizontalRule } from "@/components/mdx-ui/horizontal-rule"
+import { Emphasis } from "@/components/mdx-ui/emphasis"
+
+export const mdxComponents = {
+  // Headings
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+
+  // Text
+  p: P,
+  strong: (props: any) => <Emphasis variant="strong" {...props} />,
+  em: (props: any) => <Emphasis variant="em" {...props} />,
+
+  // Code
+  code: InlineCode,
+  pre: CodeBlock,
+
+  // Lists
+  ul: (props: any) => <List variant="unordered" {...props} />,
+  ol: (props: any) => <List variant="ordered" {...props} />,
+  li: ListItem,
+
+  // Other elements
+  blockquote: Blockquote,
+  img: Image,
+  hr: HorizontalRule,
+
+  // Custom components (use in MDX with capital letters)
+  Callout,
+  Steps,
+  Tabs,
+}
+```
+
+## Only Map Installed Components
+
+You only need to import and map components you've actually installed. If you only installed `callout` and `headings`:
+
+```tsx
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings"
+import { Callout } from "@/components/mdx-ui/callout"
+
+export const mdxComponents = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  Callout,
+}
+```
+
+## Using Component Mappings
+
+The exact usage depends on your MDX renderer:
+
+### With next-mdx-remote
+
+```tsx
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/components/mdx-components'
+
+<MDXRemote source={content} components={mdxComponents} />
+```
+
+### With contentlayer
+
+```tsx
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { mdxComponents } from '@/components/mdx-components'
+
+const MDXContent = useMDXComponent(post.body.code)
+<MDXContent components={mdxComponents} />
+```
+
+### With @next/mdx
+
+```tsx
+// mdx-components.tsx (root of project)
+import { mdxComponents } from './components/mdx-components'
+
+export function useMDXComponents(components: any) {
+  return { ...mdxComponents, ...components }
+}
+```
+
+## Advanced: Adding mdxName
+
+For better debugging, you can add `mdxName` to each component (like React.dev does):
+
+```tsx
+export const mdxComponents = {
+  h1: H1,
+  h2: H2,
+  // ... rest of mappings
+}
+
+// Add mdxName for debugging
+for (let key in mdxComponents) {
+  if (mdxComponents.hasOwnProperty(key)) {
+    (mdxComponents as any)[key].mdxName = key
+  }
+}
+```
+
+## Next Steps
+
+Choose your MDX renderer and follow the integration guide:
+
+- [Next.js + next-mdx-remote](/docs/integration/nextjs-mdx-remote)
+- [Next.js + contentlayer](/docs/integration/nextjs-contentlayer)
+- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
