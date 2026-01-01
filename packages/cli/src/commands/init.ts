@@ -19,7 +19,7 @@ export const init = new Command()
         type: "text",
         name: "componentsDir",
         message: "Where should we put the components?",
-        initial: "components/mdx",
+        initial: "src/components/mdx-ui",
       },
       {
         type: "confirm",
@@ -42,8 +42,8 @@ export const init = new Command()
       const componentsPath = path.join(cwd, config.componentsDir)
       await fs.ensureDir(componentsPath)
 
-      // Create lib directory for utils
-      const libPath = path.join(cwd, path.dirname(config.componentsDir), "lib")
+      // Create lib directory for utils (always in src/lib)
+      const libPath = path.join(cwd, "src", "lib")
       await fs.ensureDir(libPath)
 
       // Create utils.ts file
@@ -86,7 +86,7 @@ export function cn(...inputs) {
       console.log(chalk.green(`✓ Created ${config.componentsDir}/`))
       console.log(
         chalk.green(
-          `✓ Created ${path.dirname(config.componentsDir)}/lib/utils.${config.typescript ? "ts" : "js"}`
+          `✓ Created src/lib/utils.${config.typescript ? "ts" : "js"}`
         )
       )
 

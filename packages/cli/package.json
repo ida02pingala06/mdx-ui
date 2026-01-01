@@ -1,6 +1,6 @@
 {
-  "name": "@mdx-ui/cli",
-  "version": "0.0.1",
+  "name": "@suryaravikumar/mdx-ui",
+  "version": "0.0.3",
   "description": "Add MDX components to your project",
   "license": "MIT",
   "type": "module",

@@ -3,7 +3,7 @@ import fs from "fs-extra"
 import path from "path"
 import { fileURLToPath } from "url"
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/yourusername/mdx-ui/main/registry/mdx"
+const REGISTRY_URL = "https://raw.githubusercontent.com/ida02pingala06/mdx-ui/main/registry/mdx"
 
 export interface ComponentData {
   name: string
