@@ -51,6 +51,7 @@ async function loadRegistry(): Promise<Registry> {
       { name: "paragraph", type: "mdx", description: "Text paragraphs", files: [], registryDependencies: ["utils"] },
       { name: "steps", type: "mdx", description: "Numbered step-by-step guides", files: [], registryDependencies: ["utils"] },
       { name: "tabs", type: "mdx", description: "Tabbed content sections", files: [], registryDependencies: ["utils"] },
+      { name: "tree", type: "mdx", description: "Interactive file/folder tree structure", files: [], registryDependencies: ["utils"] },
       { name: "utils", type: "utility", description: "Utility functions (cn)", files: [] },
     ],
   }

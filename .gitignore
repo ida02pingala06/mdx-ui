@@ -37,3 +37,7 @@ pnpm-debug.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# SSH keys
+key
+key.pub

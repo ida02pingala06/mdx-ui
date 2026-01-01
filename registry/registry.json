@@ -89,6 +89,13 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "tree",
+      "type": "mdx",
+      "description": "Interactive file/folder tree structure for displaying project organization",
+      "files": ["mdx/tree.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "utils",
       "type": "utility",
       "description": "Utility functions for className merging (cn)",

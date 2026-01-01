@@ -3,6 +3,7 @@ import { Blockquote } from "@/components/mdx/blockquote";
 import { Callout } from "@/components/mdx/callout";
 import { Steps, Step } from "@/components/mdx/steps";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs";
+import { Tree, TreeItem } from "@/components/mdx/tree";
 import { Headings } from "@/components/mdx/headings";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading";
 import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/paragraph";
@@ -16,6 +17,8 @@ const components = {
   TabsList,
   TabsTrigger,
   TabsContent,
+  Tree,
+  TreeItem,
   Headings,
   Paragraph,
   Lead,

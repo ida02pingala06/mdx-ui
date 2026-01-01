@@ -52,7 +52,7 @@ export const Component = defineDocumentType(() => ({
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
-  filePathPattern: `docs/*.mdx`,
+  filePathPattern: `docs/{index,integration/**/*}.mdx`,
   contentType: "mdx",
   fields: {
     title: {

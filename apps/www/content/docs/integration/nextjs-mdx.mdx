@@ -265,24 +265,36 @@ export default async function Page() {
 
 ### Recommended Structure
 
-```
-your-project/
-├── app/
-│   ├── blog/
-│   │   ├── [slug]/
-│   │   │   └── page.tsx
-│   │   └── page.tsx
-│   └── layout.tsx
-├── content/
-│   └── blog/
-│       ├── first-post.mdx
-│       └── second-post.mdx
-├── components/
-│   ├── mdx-ui/          # Installed components
-│   └── mdx-components.tsx
-├── mdx-components.tsx   # Root-level (required!)
-└── next.config.mjs
-```
+<Tree>
+  <TreeItem name="your-project" isFolder defaultOpen>
+    <TreeItem name="app" isFolder defaultOpen>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="[slug]" isFolder>
+          <TreeItem name="page.tsx" />
+        </TreeItem>
+        <TreeItem name="page.tsx" />
+      </TreeItem>
+      <TreeItem name="layout.tsx" />
+    </TreeItem>
+    <TreeItem name="content" isFolder>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="first-post.mdx" />
+        <TreeItem name="second-post.mdx" />
+      </TreeItem>
+    </TreeItem>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="mdx-ui" isFolder>
+        <TreeItem name="tree.tsx" />
+        <TreeItem name="callout.tsx" />
+      </TreeItem>
+      <TreeItem name="mdx-components.tsx" />
+    </TreeItem>
+    <TreeItem name="mdx-components.tsx" />
+    <TreeItem name="next.config.mjs" />
+  </TreeItem>
+</Tree>
+
+**Important:** The `mdx-components.tsx` file must be in the project root!
 
 ## Troubleshooting
 
