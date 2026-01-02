@@ -29,6 +29,13 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "file-tree",
+      "type": "mdx",
+      "description": "Simple string-based file/folder tree structure with minimal syntax",
+      "files": ["mdx/file-tree.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "heading",
       "type": "mdx",
       "description": "Flexible and reusable heading component with variant support",

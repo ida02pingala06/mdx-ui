@@ -23,6 +23,10 @@
       "path": "/docs/components/callout"
     },
     {
+      "title": "File Tree",
+      "path": "/docs/components/file-tree"
+    },
+    {
       "title": "Heading",
       "path": "/docs/components/heading"
     },

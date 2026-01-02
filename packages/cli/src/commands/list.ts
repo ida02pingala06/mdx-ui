@@ -42,6 +42,7 @@ async function loadRegistry(): Promise<Registry> {
       { name: "callout", type: "mdx", description: "Alert boxes for important information", files: [], registryDependencies: ["utils"] },
       { name: "code-block", type: "mdx", description: "Syntax highlighted code blocks", files: [], registryDependencies: ["utils"] },
       { name: "emphasis", type: "mdx", description: "Text emphasis (bold/italic)", files: [], registryDependencies: ["utils"] },
+      { name: "file-tree", type: "mdx", description: "Simple string-based file/folder tree", files: [], registryDependencies: ["utils"] },
       { name: "heading", type: "mdx", description: "Flexible heading component with variant support", files: [], registryDependencies: ["utils"] },
       { name: "headings", type: "mdx", description: "Headings with anchor links", files: [], registryDependencies: ["utils"] },
       { name: "horizontal-rule", type: "mdx", description: "Divider lines with multiple styles", files: [] },

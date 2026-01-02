@@ -13,9 +13,15 @@ registryDependencies: ["utils"]
 npx @suryaravikumar/mdx-ui add tree
 ```
 
+<Callout type="info">
+**Looking for simpler syntax?** Check out the [FileTree](/docs/components/file-tree) component for a string-based alternative with 90% less code!
+</Callout>
+
 ## Usage
 
 The Tree component helps you display file and folder structures in your documentation, making it easy for users to understand project organization.
+
+This component gives you **full programmatic control** over each tree item. If you prefer a simpler text-based syntax, use [FileTree](/docs/components/file-tree) instead.
 
 ### Basic Example
 
@@ -48,7 +54,7 @@ The Tree component helps you display file and folder structures in your document
 <Tree>
   <TreeItem name="my-project" isFolder defaultOpen>
     <TreeItem name="app" isFolder defaultOpen>
-      <TreeItem name="blog" isFolder>
+      <TreeItem name="blog" isFolder defaultOpen>
         <TreeItem name="[slug]" isFolder>
           <TreeItem name="page.tsx" />
         </TreeItem>
@@ -57,7 +63,7 @@ The Tree component helps you display file and folder structures in your document
       <TreeItem name="layout.tsx" />
     </TreeItem>
     <TreeItem name="components" isFolder defaultOpen>
-      <TreeItem name="mdx-ui" isFolder>
+      <TreeItem name="mdx-ui" isFolder defaultOpen>
         <TreeItem name="tree.tsx" />
         <TreeItem name="callout.tsx" />
       </TreeItem>
