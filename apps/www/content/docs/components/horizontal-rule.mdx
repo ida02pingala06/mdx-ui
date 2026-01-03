@@ -1,0 +1,100 @@
+---
+title: Horizontal Rule
+description: Styled dividers for content sections
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add horizontal-rule
+```
+
+## Usage
+
+Create a horizontal rule using three or more hyphens, asterisks, or underscores:
+
+```mdx
+---
+
+***
+
+___
+```
+
+All three syntaxes render the same horizontal rule.
+
+## Features
+
+- Clean, minimal design
+- Responsive spacing
+- Theme-aware styling
+- Semantic HTML (`<hr>`)
+
+## Examples
+
+### Section Divider
+
+```mdx
+## First Section
+
+Content for the first section.
+
+---
+
+## Second Section
+
+Content for the second section.
+```
+
+### Between Content
+
+```mdx
+Here's some important information.
+
+---
+
+And here's some more context below.
+```
+
+### Multiple Rules
+
+```mdx
+# Document Title
+
+Introduction text.
+
+---
+
+## Main Content
+
+The main content goes here.
+
+---
+
+## Conclusion
+
+Final thoughts and summary.
+```
+
+## Styling
+
+The horizontal rule has default spacing and styling that works well in most contexts. It uses theme colors and adapts to light/dark modes.
+
+## Customization
+
+You can customize the horizontal rule through your MDX component mappings:
+
+```tsx
+import { Hr } from "@/components/mdx-ui/horizontal-rule"
+
+export const mdxComponents = {
+  hr: Hr,
+}
+```
+
+## Accessibility
+
+- Uses semantic `<hr>` element
+- Properly announces section breaks to screen readers
+- Maintains visual rhythm with appropriate spacing

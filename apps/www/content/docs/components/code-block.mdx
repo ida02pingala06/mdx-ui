@@ -1,0 +1,105 @@
+---
+title: Code Block
+description: Syntax-highlighted code blocks with language support
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add code-block
+```
+
+## Usage
+
+Code blocks are automatically rendered with syntax highlighting:
+
+````mdx
+```javascript
+function hello() {
+  console.log("Hello, world!");
+}
+```
+````
+
+## Features
+
+- Syntax highlighting for multiple languages
+- Line numbers (optional)
+- Copy button
+- Language label
+- Responsive design
+
+## Props
+
+The code block component uses standard MDX fenced code blocks.
+
+### Language Support
+
+Supports all common programming languages:
+
+- JavaScript/TypeScript
+- Python
+- Rust
+- Go
+- Java
+- HTML/CSS
+- Bash
+- And many more...
+
+## Examples
+
+### JavaScript
+
+````mdx
+```javascript
+const greeting = "Hello, MDX!";
+console.log(greeting);
+```
+````
+
+### TypeScript
+
+````mdx
+```typescript
+interface User {
+  name: string;
+  age: number;
+}
+
+const user: User = {
+  name: "Alice",
+  age: 30
+};
+```
+````
+
+### Python
+
+````mdx
+```python
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("World"))
+```
+````
+
+### Bash
+
+````mdx
+```bash
+npm install @suryaravikumar/mdx-ui
+npx mdx-ui init
+```
+````
+
+## Customization
+
+The code block component can be customized through your Tailwind configuration and MDX setup.
+
+## Notes
+
+- Uses Shiki for syntax highlighting (if configured)
+- Supports both light and dark themes
+- Automatically detects language from code fence

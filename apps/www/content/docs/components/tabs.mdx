@@ -1,0 +1,199 @@
+---
+title: Tabs
+description: Interactive tabbed content panels
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add tabs
+```
+
+## Usage
+
+Create tabbed content with the Tabs component:
+
+```mdx
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npm install package-name
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add package-name
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add package-name
+    ```
+  </TabsContent>
+</Tabs>
+```
+
+## Features
+
+- Interactive tab switching
+- Keyboard navigation
+- ARIA accessibility
+- Smooth transitions
+- Customizable styling
+- Multiple tabs support
+
+## Props
+
+### Tabs
+
+- `defaultValue`: The default active tab (required)
+- `value`: Controlled tab value (optional)
+- `onValueChange`: Callback when tab changes (optional)
+
+### TabsTrigger
+
+- `value`: Unique identifier for the tab (required)
+- `disabled`: Disable the tab (optional)
+
+### TabsContent
+
+- `value`: Must match a TabsTrigger value (required)
+
+## Examples
+
+### Package Manager Tabs
+
+```mdx
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    \`\`\`bash
+    npm install @suryaravikumar/mdx-ui
+    \`\`\`
+  </TabsContent>
+  <TabsContent value="pnpm">
+    \`\`\`bash
+    pnpm add @suryaravikumar/mdx-ui
+    \`\`\`
+  </TabsContent>
+  <TabsContent value="yarn">
+    \`\`\`bash
+    yarn add @suryaravikumar/mdx-ui
+    \`\`\`
+  </TabsContent>
+</Tabs>
+```
+
+### Code Examples
+
+```mdx
+<Tabs defaultValue="javascript">
+  <TabsList>
+    <TabsTrigger value="javascript">JavaScript</TabsTrigger>
+    <TabsTrigger value="typescript">TypeScript</TabsTrigger>
+    <TabsTrigger value="python">Python</TabsTrigger>
+  </TabsList>
+  <TabsContent value="javascript">
+    \`\`\`javascript
+    function greet(name) {
+      return \`Hello, \${name}!\`;
+    }
+    \`\`\`
+  </TabsContent>
+  <TabsContent value="typescript">
+    \`\`\`typescript
+    function greet(name: string): string {
+      return \`Hello, \${name}!\`;
+    }
+    \`\`\`
+  </TabsContent>
+  <TabsContent value="python">
+    \`\`\`python
+    def greet(name):
+        return f"Hello, {name}!"
+    \`\`\`
+  </TabsContent>
+</Tabs>
+```
+
+### Platform-Specific Instructions
+
+```mdx
+<Tabs defaultValue="mac">
+  <TabsList>
+    <TabsTrigger value="mac">macOS</TabsTrigger>
+    <TabsTrigger value="windows">Windows</TabsTrigger>
+    <TabsTrigger value="linux">Linux</TabsTrigger>
+  </TabsList>
+  <TabsContent value="mac">
+    ## macOS Setup
+
+    1. Open Terminal
+    2. Run: \`brew install node\`
+    3. Verify: \`node --version\`
+  </TabsContent>
+  <TabsContent value="windows">
+    ## Windows Setup
+
+    1. Download Node.js installer
+    2. Run the installer
+    3. Verify: \`node --version\`
+  </TabsContent>
+  <TabsContent value="linux">
+    ## Linux Setup
+
+    1. Open terminal
+    2. Run: \`sudo apt install nodejs\`
+    3. Verify: \`node --version\`
+  </TabsContent>
+</Tabs>
+```
+
+## Keyboard Navigation
+
+- `Tab`: Move focus to next element
+- `Arrow Left/Right`: Switch between tabs
+- `Enter/Space`: Activate focused tab
+
+## Accessibility
+
+- Full ARIA support (`role="tablist"`, `role="tab"`, `role="tabpanel"`)
+- Keyboard navigation
+- Focus management
+- Screen reader announcements
+- Proper tab indexing
+
+## Styling
+
+The tabs component uses Tailwind CSS classes and supports:
+
+- Custom colors
+- Different sizes
+- Border styles
+- Hover and active states
+- Dark mode
+
+## Best Practices
+
+1. Use clear, concise tab labels
+2. Keep related content together
+3. Don't nest tabs too deeply
+4. Provide default tab selection
+5. Keep tab content focused
+
+## Notes
+
+- Based on Radix UI Tabs (if using shadcn/ui base)
+- Fully accessible out of the box
+- Works with all MDX renderers
+- Supports controlled and uncontrolled modes

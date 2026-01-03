@@ -1,0 +1,136 @@
+---
+title: Image
+description: Optimized and responsive images
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add image
+```
+
+## Usage
+
+Use standard Markdown image syntax:
+
+```mdx
+![Alt text](/path/to/image.jpg)
+![Logo](https://example.com/logo.png)
+```
+
+With title attribute:
+
+```mdx
+![Alt text](/image.jpg "Image title")
+```
+
+## Features
+
+- Responsive sizing
+- Automatic lazy loading
+- Alt text support
+- Title attribute support
+- Rounded corners
+- Border styling
+- Optimized for Next.js Image component (when configured)
+
+## Examples
+
+### Basic Image
+
+```mdx
+![Beautiful landscape](/images/landscape.jpg)
+```
+
+### With Title
+
+```mdx
+![Product screenshot](/images/product.png "Our amazing product")
+```
+
+### External Image
+
+```mdx
+![Remote image](https://picsum.photos/800/400)
+```
+
+### Multiple Images
+
+```mdx
+![Image 1](/images/one.jpg)
+![Image 2](/images/two.jpg)
+![Image 3](/images/three.jpg)
+```
+
+## Props
+
+Images automatically receive these attributes:
+
+- `alt`: Required for accessibility
+- `src`: Path to the image
+- `title`: Optional tooltip text
+- `loading`: Set to "lazy" for performance
+
+## Customization
+
+### Using Next.js Image
+
+For optimal performance in Next.js, configure the Image component:
+
+```tsx
+import Image from "next/image"
+import { ComponentProps } from "react"
+
+export function MdxImage(props: ComponentProps<typeof Image>) {
+  return (
+    <Image
+      {...props}
+      width={800}
+      height={400}
+      className="rounded-lg border"
+    />
+  )
+}
+
+export const mdxComponents = {
+  img: MdxImage,
+}
+```
+
+### Styling
+
+Customize image styling through your component:
+
+```tsx
+export function Img(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  return (
+    <img
+      {...props}
+      className="rounded-xl shadow-lg my-8"
+      loading="lazy"
+    />
+  )
+}
+```
+
+## Accessibility
+
+- Always include meaningful alt text
+- Use empty alt (`alt=""`) for decorative images
+- Provide title for additional context when needed
+- Ensure sufficient color contrast in images
+
+## Best Practices
+
+1. **Use descriptive alt text**: Describe what's in the image
+2. **Optimize image sizes**: Use appropriate dimensions
+3. **Choose the right format**: WebP for photos, SVG for logos
+4. **Lazy load**: Improve page load performance
+5. **Responsive images**: Scale well on all devices
+
+## Notes
+
+- Images should be placed in your `public/` directory
+- Use relative paths from the public directory
+- Consider using Next.js Image for automatic optimization

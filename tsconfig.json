@@ -6,13 +6,12 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowJs": true,
+    "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "ignoreDeprecations": "5.0"
-  }
+  },
+  "exclude": ["node_modules", "apps", "dist", ".next", ".contentlayer"]
 }

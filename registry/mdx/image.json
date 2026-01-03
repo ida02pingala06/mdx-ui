@@ -2,7 +2,7 @@
   "name": "image",
   "files": [
     {
-      "path": "components/mdx/image.tsx",
+      "path": "image.tsx",
       "content": "import * as React from \"react\"\n\nexport interface ImageProps {\n  src: string\n  alt: string\n  caption?: string\n  className?: string\n  width?: number\n  height?: number\n}\n\nexport function Image({\n  src,\n  alt,\n  caption,\n  className = \"\",\n  width,\n  height\n}: ImageProps) {\n  return (\n    <figure className={`my-6 ${className}`}>\n      <img\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        className=\"rounded-lg border border-gray-200 dark:border-gray-800 w-full\"\n      />\n      {caption && (\n        <figcaption className=\"mt-2 text-center text-sm text-gray-600 dark:text-gray-400 italic\">\n          {caption}\n        </figcaption>\n      )}\n    </figure>\n  )\n}\n"
     }
   ],

@@ -46,7 +46,9 @@ async function loadRegistry(): Promise<Registry> {
       { name: "callout", type: "mdx", description: "Alert boxes", files: [] },
       { name: "code-block", type: "mdx", description: "Code blocks", files: [] },
       { name: "emphasis", type: "mdx", description: "Bold/italic", files: [] },
-      { name: "headings", type: "mdx", description: "Headings", files: [] },
+      { name: "file-tree", type: "mdx", description: "File tree structure", files: [] },
+      { name: "heading", type: "mdx", description: "Reusable heading", files: [] },
+      { name: "headings", type: "mdx", description: "H1-H6 headings", files: [] },
       { name: "horizontal-rule", type: "mdx", description: "Dividers", files: [] },
       { name: "image", type: "mdx", description: "Images", files: [] },
       { name: "inline-code", type: "mdx", description: "Inline code", files: [] },
@@ -54,6 +56,7 @@ async function loadRegistry(): Promise<Registry> {
       { name: "paragraph", type: "mdx", description: "Paragraphs", files: [] },
       { name: "steps", type: "mdx", description: "Step guides", files: [] },
       { name: "tabs", type: "mdx", description: "Tabs", files: [] },
+      { name: "tree", type: "mdx", description: "Interactive tree", files: [] },
     ],
   }
 }

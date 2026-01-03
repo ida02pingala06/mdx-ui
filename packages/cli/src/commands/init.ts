@@ -4,6 +4,7 @@ import chalk from "chalk"
 import ora from "ora"
 import fs from "fs-extra"
 import path from "path"
+import { detectProjectStructure } from "../utils/detect-structure.js"
 
 export const init = new Command()
   .name("init")
@@ -13,13 +14,22 @@ export const init = new Command()
 
     const cwd = process.cwd()
 
+    // Detect project structure
+    const structure = await detectProjectStructure(cwd)
+
+    console.log(
+      chalk.dim(
+        `Detected ${structure.hasSrc ? "src/" : "root-level"} project structure\n`
+      )
+    )
+
     // Ask configuration questions
     const config = await prompts([
       {
         type: "text",
         name: "componentsDir",
         message: "Where should we put the components?",
-        initial: "src/components/mdx-ui",
+        initial: structure.componentsDir,
       },
       {
         type: "confirm",
@@ -42,8 +52,8 @@ export const init = new Command()
       const componentsPath = path.join(cwd, config.componentsDir)
       await fs.ensureDir(componentsPath)
 
-      // Create lib directory for utils (always in src/lib)
-      const libPath = path.join(cwd, "src", "lib")
+      // Determine lib path based on project structure
+      const libPath = path.join(cwd, structure.libDir)
       await fs.ensureDir(libPath)
 
       // Create utils.ts file
@@ -86,7 +96,7 @@ export function cn(...inputs) {
       console.log(chalk.green(`✓ Created ${config.componentsDir}/`))
       console.log(
         chalk.green(
-          `✓ Created src/lib/utils.${config.typescript ? "ts" : "js"}`
+          `✓ Created ${structure.libDir}/utils.${config.typescript ? "ts" : "js"}`
         )
       )
 

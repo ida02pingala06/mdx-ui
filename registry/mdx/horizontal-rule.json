@@ -2,7 +2,7 @@
   "name": "horizontal-rule",
   "files": [
     {
-      "path": "components/mdx/horizontal-rule.tsx",
+      "path": "horizontal-rule.tsx",
       "content": "import * as React from \"react\"\n\nexport interface HorizontalRuleProps {\n  className?: string\n  variant?: \"default\" | \"dashed\" | \"dotted\" | \"gradient\"\n}\n\nexport function HorizontalRule({\n  className = \"\",\n  variant = \"default\"\n}: HorizontalRuleProps) {\n  const variantStyles = {\n    default: \"border-t border-gray-300 dark:border-gray-700\",\n    dashed: \"border-t border-dashed border-gray-300 dark:border-gray-700\",\n    dotted: \"border-t border-dotted border-gray-300 dark:border-gray-700\",\n    gradient: \"h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent border-0\"\n  }\n\n  return (\n    <hr className={`my-8 ${variantStyles[variant]} ${className}`} />\n  )\n}\n"
     }
   ],
