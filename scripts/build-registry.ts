@@ -89,6 +89,11 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "mdx-components": {
+    description: "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
+    dependencies: ["@types/mdx"],
+    registryDependencies: ["utils"]
+  },
   "utils": {
     description: "Utility functions for className merging (cn)",
     dependencies: ["clsx", "tailwind-merge"]

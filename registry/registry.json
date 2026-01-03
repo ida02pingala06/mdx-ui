@@ -122,6 +122,17 @@
       ]
     },
     {
+      "name": "mdx-components",
+      "type": "mdx",
+      "description": "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
+      "files": [
+        "mdx/mdx-components.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "paragraph",
       "type": "mdx",
       "description": "Standard text paragraph component with proper spacing and typography",
