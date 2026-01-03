@@ -2,15 +2,13 @@
   "name": "heading",
   "type": "component",
   "description": "Flexible and reusable heading component with variant support",
-  "dependencies": [
-    "class-variance-authority"
-  ],
+  "dependencies": [],
   "registryDependencies": [
     "utils"
   ],
   "files": [
     {
-      "name": "heading.tsx",
+      "path": "heading.tsx",
       "content": "import * as React from \"react\";\nimport { cn } from \"./lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst headingVariants = cva(\"scroll-m-28 tracking-tight\", {\n  variants: {\n    level: {\n      h1: \"text-4xl font-bold lg:text-5xl\",\n      h2: \"text-2xl font-semibold mt-12 first:mt-0\",\n      h3: \"text-xl font-semibold mt-8\",\n      h4: \"text-base font-medium mt-6\",\n      h5: \"text-base font-medium mt-6\",\n      h6: \"text-sm font-medium mt-6\",\n    },\n  },\n  defaultVariants: {\n    level: \"h2\",\n  },\n});\n\nexport interface HeadingProps\n  extends React.HTMLAttributes<HTMLHeadingElement>,\n    VariantProps<typeof headingVariants> {\n  as?: \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\";\n}\n\nexport const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(\n  ({ as, level, className, ...props }, ref) => {\n    const Comp = as || level || \"h2\";\n\n    return (\n      <Comp\n        ref={ref}\n        className={cn(headingVariants({ level: level || (as as any) }), className)}\n        {...props}\n      />\n    );\n  }\n);\n\nHeading.displayName = \"Heading\";\n\n// Convenience components for each heading level\nexport const H1 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h1\" level=\"h1\" {...props} />\n);\nH1.displayName = \"H1\";\n\nexport const H2 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h2\" level=\"h2\" {...props} />\n);\nH2.displayName = \"H2\";\n\nexport const H3 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h3\" level=\"h3\" {...props} />\n);\nH3.displayName = \"H3\";\n\nexport const H4 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h4\" level=\"h4\" {...props} />\n);\nH4.displayName = \"H4\";\n\nexport const H5 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h5\" level=\"h5\" {...props} />\n);\nH5.displayName = \"H5\";\n\nexport const H6 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, \"as\" | \"level\">>(\n  (props, ref) => <Heading ref={ref} as=\"h6\" level=\"h6\" {...props} />\n);\nH6.displayName = \"H6\";\n"
     }
   ]

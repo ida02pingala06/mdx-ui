@@ -1,10 +1,15 @@
 {
   "name": "code-block",
+  "type": "component",
+  "description": "Syntax highlighted code blocks with title and line numbers",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "code-block.tsx",
       "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {\n  title?: string\n  showLineNumbers?: boolean\n}\n\nexport function CodeBlock({\n  className,\n  title,\n  showLineNumbers = false,\n  children,\n  ...props\n}: CodeBlockProps) {\n  return (\n    <div className=\"my-6 overflow-hidden rounded-lg border border-gray-700 bg-gray-950\">\n      {title && (\n        <div className=\"border-b border-gray-700 bg-gray-900 px-4 py-2 text-sm font-medium text-white\">\n          {title}\n        </div>\n      )}\n      <pre\n        className={cn(\n          \"overflow-x-auto p-4\",\n          showLineNumbers && \"[counter-reset:line]\",\n          className\n        )}\n        {...props}\n      >\n        <code className=\"text-sm text-gray-300\">{children}</code>\n      </pre>\n    </div>\n  )\n}\n"
     }
-  ],
-  "dependencies": ["clsx", "tailwind-merge"]
+  ]
 }

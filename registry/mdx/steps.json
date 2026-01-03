@@ -1,11 +1,15 @@
 {
   "name": "steps",
+  "type": "component",
+  "description": "Numbered step-by-step guides with visual indicators",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "steps.tsx",
       "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {\n  children: React.ReactNode\n}\n\nexport interface StepProps extends React.HTMLAttributes<HTMLDivElement> {\n  title?: string\n  children: React.ReactNode\n}\n\nexport function Steps({ className, children, ...props }: StepsProps) {\n  return (\n    <div\n      className={cn(\"[counter-reset:step] my-6 space-y-8\", className)}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nexport function Step({ className, title, children, ...props }: StepProps) {\n  return (\n    <div\n      className={cn(\"relative flex gap-4\", className)}\n      {...props}\n    >\n      <div className=\"flex flex-col items-center\">\n        <div className=\"flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-700 bg-gray-900 text-sm font-bold text-white [counter-increment:step] before:content-[counter(step)]\" />\n        <div className=\"mt-2 h-full w-px bg-gray-700\" />\n      </div>\n      <div className=\"flex-1 pb-8\">\n        {title && (\n          <h3 className=\"mb-2 font-semibold text-white\">{title}</h3>\n        )}\n        <div className=\"text-gray-300\">{children}</div>\n      </div>\n    </div>\n  )\n}\n"
     }
-  ],
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"]
+  ]
 }

@@ -1,14 +1,15 @@
 {
   "name": "paragraph",
-  "type": "mdx",
+  "type": "component",
   "description": "Standard text paragraph component with proper spacing and typography",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "paragraph.tsx",
-      "type": "component",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface ParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {\n  children: React.ReactNode\n}\n\nexport function P({ children, className, ...props }: ParagraphProps) {\n  return (\n    <p\n      className={cn(\n        \"leading-7 text-foreground\",\n        \"[&:not(:first-child)]:mt-6\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </p>\n  )\n}\n"
+      "content": "import * as React from \"react\";\nimport { cn } from \"./lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst paragraphVariants = cva(\"\", {\n  variants: {\n    variant: {\n      default: \"text-base leading-7 [&:not(:first-child)]:mt-6\",\n      lead: \"text-xl text-muted-foreground leading-relaxed\",\n      large: \"text-lg font-semibold\",\n      small: \"text-sm font-medium leading-none\",\n      muted: \"text-sm text-muted-foreground\",\n      intro: \"text-lg leading-8 text-muted-foreground\",\n    },\n    align: {\n      left: \"text-left\",\n      center: \"text-center\",\n      right: \"text-right\",\n      justify: \"text-justify\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    align: \"left\",\n  },\n});\n\nexport interface ParagraphProps\n  extends React.HTMLAttributes<HTMLParagraphElement>,\n    VariantProps<typeof paragraphVariants> {\n  as?: \"p\" | \"div\" | \"span\";\n}\n\nexport const Paragraph = React.forwardRef<HTMLParagraphElement, ParagraphProps>(\n  ({ as: Comp = \"p\", variant, align, className, ...props }, ref) => {\n    return (\n      <Comp\n        ref={ref}\n        className={cn(paragraphVariants({ variant, align }), className)}\n        {...props}\n      />\n    );\n  }\n);\n\nParagraph.displayName = \"Paragraph\";\n\n// Convenience components for common paragraph styles\nexport const Lead = React.forwardRef<HTMLParagraphElement, Omit<ParagraphProps, \"variant\">>(\n  ({ className, ...props }, ref) => (\n    <Paragraph ref={ref} variant=\"lead\" className={className} {...props} />\n  )\n);\nLead.displayName = \"Lead\";\n\nexport const Intro = React.forwardRef<HTMLParagraphElement, Omit<ParagraphProps, \"variant\">>(\n  ({ className, ...props }, ref) => (\n    <Paragraph ref={ref} variant=\"intro\" className={className} {...props} />\n  )\n);\nIntro.displayName = \"Intro\";\n\nexport const Large = React.forwardRef<HTMLParagraphElement, Omit<ParagraphProps, \"variant\">>(\n  ({ className, ...props }, ref) => (\n    <Paragraph ref={ref} variant=\"large\" className={className} {...props} />\n  )\n);\nLarge.displayName = \"Large\";\n\nexport const Small = React.forwardRef<HTMLParagraphElement, Omit<ParagraphProps, \"variant\">>(\n  ({ className, ...props }, ref) => (\n    <Paragraph ref={ref} variant=\"small\" className={className} {...props} />\n  )\n);\nSmall.displayName = \"Small\";\n\nexport const Muted = React.forwardRef<HTMLParagraphElement, Omit<ParagraphProps, \"variant\">>(\n  ({ className, ...props }, ref) => (\n    <Paragraph ref={ref} variant=\"muted\" className={className} {...props} />\n  )\n);\nMuted.displayName = \"Muted\";\n"
     }
-  ],
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"]
+  ]
 }

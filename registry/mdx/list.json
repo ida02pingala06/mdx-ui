@@ -1,10 +1,13 @@
 {
   "name": "list",
+  "type": "component",
+  "description": "Styled ordered and unordered lists with list items",
+  "dependencies": [],
+  "registryDependencies": [],
   "files": [
     {
       "path": "list.tsx",
       "content": "import * as React from \"react\"\n\nexport interface ListProps {\n  children: React.ReactNode\n  className?: string\n}\n\nexport function UnorderedList({ children, className = \"\" }: ListProps) {\n  return (\n    <ul\n      className={`list-disc list-outside ml-6 my-4 space-y-2 text-gray-700 dark:text-gray-300 ${className}`}\n    >\n      {children}\n    </ul>\n  )\n}\n\nexport function OrderedList({ children, className = \"\" }: ListProps) {\n  return (\n    <ol\n      className={`list-decimal list-outside ml-6 my-4 space-y-2 text-gray-700 dark:text-gray-300 ${className}`}\n    >\n      {children}\n    </ol>\n  )\n}\n\nexport interface ListItemProps {\n  children: React.ReactNode\n  className?: string\n}\n\nexport function ListItem({ children, className = \"\" }: ListItemProps) {\n  return (\n    <li className={`leading-relaxed ${className}`}>\n      {children}\n    </li>\n  )\n}\n"
     }
-  ],
-  "dependencies": []
+  ]
 }

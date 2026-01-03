@@ -1,11 +1,15 @@
 {
   "name": "tabs",
+  "type": "component",
+  "description": "Tabbed content sections with state management",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "tabs.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface TabsContextValue {\n  value: string\n  onValueChange: (value: string) => void\n}\n\nconst TabsContext = React.createContext<TabsContextValue | undefined>(undefined)\n\nfunction useTabsContext() {\n  const context = React.useContext(TabsContext)\n  if (!context) {\n    throw new Error(\"Tabs components must be used within Tabs\")\n  }\n  return context\n}\n\nexport interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {\n  defaultValue?: string\n  value?: string\n  onValueChange?: (value: string) => void\n}\n\nexport function Tabs({\n  defaultValue,\n  value: controlledValue,\n  onValueChange,\n  children,\n  ...props\n}: TabsProps) {\n  const [internalValue, setInternalValue] = React.useState(defaultValue || \"\")\n  const value = controlledValue ?? internalValue\n\n  const handleValueChange = React.useCallback(\n    (newValue: string) => {\n      setInternalValue(newValue)\n      onValueChange?.(newValue)\n    },\n    [onValueChange]\n  )\n\n  return (\n    <TabsContext.Provider value={{ value, onValueChange: handleValueChange }}>\n      <div {...props}>{children}</div>\n    </TabsContext.Provider>\n  )\n}\n\nexport interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nexport function TabsList({ className, children, ...props }: TabsListProps) {\n  return (\n    <div\n      className={cn(\n        \"inline-flex h-10 items-center justify-center rounded-md bg-gray-900 p-1 text-gray-400\",\n        className\n      )}\n      role=\"tablist\"\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nexport interface TabsTriggerProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  value: string\n}\n\nexport function TabsTrigger({\n  className,\n  value: triggerValue,\n  children,\n  ...props\n}: TabsTriggerProps) {\n  const { value, onValueChange } = useTabsContext()\n  const isActive = value === triggerValue\n\n  return (\n    <button\n      type=\"button\"\n      role=\"tab\"\n      aria-selected={isActive}\n      className={cn(\n        \"inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 disabled:pointer-events-none disabled:opacity-50\",\n        isActive\n          ? \"bg-gray-950 text-white shadow-sm\"\n          : \"hover:bg-gray-800 hover:text-gray-200\",\n        className\n      )}\n      onClick={() => onValueChange(triggerValue)}\n      {...props}\n    >\n      {children}\n    </button>\n  )\n}\n\nexport interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {\n  value: string\n}\n\nexport function TabsContent({\n  className,\n  value: contentValue,\n  children,\n  ...props\n}: TabsContentProps) {\n  const { value } = useTabsContext()\n  const isActive = value === contentValue\n\n  if (!isActive) return null\n\n  return (\n    <div\n      role=\"tabpanel\"\n      className={cn(\n        \"mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n"
     }
-  ],
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"]
+  ]
 }
