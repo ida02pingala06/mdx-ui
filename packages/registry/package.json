@@ -1,0 +1,13 @@
+{
+  "name": "@mdx-ui/registry",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Component registry source files",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5",
+    "class-variance-authority": "^0.7.1",
+    "@types/react": "^18.2.65",
+    "react": "^18.2.0"
+  }
+}
