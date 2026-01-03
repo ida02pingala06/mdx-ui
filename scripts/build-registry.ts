@@ -91,7 +91,7 @@ const componentsMetadata: Record<string, {
   },
   "utils": {
     description: "Utility functions for className merging (cn)",
-    dependencies: []
+    dependencies: ["clsx", "tailwind-merge"]
   }
 }
 
@@ -158,11 +158,12 @@ async function buildRegistry() {
   const utilsPath = path.join(srcDir, "lib/utils.ts")
   if (await fs.pathExists(utilsPath)) {
     const content = await fs.readFile(utilsPath, "utf-8")
+    const utilsMetadata = componentsMetadata["utils"]
     const componentJson = {
       name: "utils",
       type: "utility",
-      description: "Utility functions for className merging (cn)",
-      dependencies: [],
+      description: utilsMetadata?.description || "Utility functions for className merging (cn)",
+      dependencies: utilsMetadata?.dependencies || [],
       files: [
         {
           path: "lib/utils.ts",
