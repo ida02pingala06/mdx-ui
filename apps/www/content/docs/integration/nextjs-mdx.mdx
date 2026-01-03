@@ -1,0 +1,352 @@
+---
+title: Next.js + @next/mdx
+description: Integrate MDX UI with Next.js using the official @next/mdx plugin
+published: true
+---
+
+## Overview
+
+[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx) is the official Next.js plugin for MDX support. It treats `.mdx` files as pages or components, making them first-class citizens in your app.
+
+**Best for:** MDX-first sites, simple blogs, documentation
+
+## Installation
+
+### 1. Install Dependencies
+
+```bash
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+
+### 2. Initialize MDX UI
+
+```bash
+npx @suryaravikumar/mdx-ui init
+```
+
+### 3. Install Components
+
+```bash
+npx @suryaravikumar/mdx-ui add headings paragraph callout
+```
+
+## Setup
+
+### 1. Configure Next.js
+
+Create or update `next.config.mjs`:
+
+```js
+import createMDX from '@next/mdx'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Configure `pageExtensions` to include MDX files
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // Optionally, add any other Next.js config below
+}
+
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+    ],
+  },
+})
+
+// Wrap MDX config with Next.js config
+export default withMDX(nextConfig)
+```
+
+### 2. Create Component Mappings
+
+Create `mdx-components.tsx` in the **root** of your project:
+
+```tsx
+import type { MDXComponents } from 'mdx/types'
+import { H1, H2, H3, H4, H5, H6 } from '@/components/mdx-ui/headings'
+import { P } from '@/components/mdx-ui/paragraph'
+import { Callout } from '@/components/mdx-ui/callout'
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    h6: H6,
+    p: P,
+    Callout,
+    ...components,
+  }
+}
+```
+
+**Important:** This file must be named `mdx-components.tsx` and placed in the root directory, not in `components/`.
+
+### 3. Create MDX Pages
+
+Create `app/blog/hello-world/page.mdx`:
+
+```mdx
+export const metadata = {
+  title: 'Hello World',
+  description: 'My first MDX page'
+}
+
+# Hello World
+
+This is my first blog post using MDX UI components.
+
+<Callout variant="info" title="Direct MDX Pages">
+  With @next/mdx, MDX files are treated as pages. No need for separate rendering logic!
+</Callout>
+
+## Features
+
+- Write pages directly in MDX
+- Use React components
+- Full Next.js integration
+```
+
+### 4. Create MDX Component
+
+You can also import MDX as components:
+
+Create `content/about.mdx`:
+
+```mdx
+# About Us
+
+We build amazing documentation sites with **MDX UI**.
+
+<Callout variant="success">
+  MDX components can be imported and used anywhere!
+</Callout>
+```
+
+Use it in a page `app/about/page.tsx`:
+
+```tsx
+import About from '@/content/about.mdx'
+
+export default function AboutPage() {
+  return (
+    <div className="prose dark:prose-invert max-w-4xl mx-auto px-4 py-8">
+      <About />
+    </div>
+  )
+}
+```
+
+## Advanced Configuration
+
+### Custom Components Provider
+
+For more control, create a custom provider:
+
+```tsx
+// components/mdx-provider.tsx
+'use client'
+
+import { MDXProvider } from '@mdx-js/react'
+import { mdxComponents } from './mdx-components'
+
+export function MDXComponentsProvider({ children }: { children: React.ReactNode }) {
+  return <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+}
+```
+
+Then wrap your app:
+
+```tsx
+// app/layout.tsx
+import { MDXComponentsProvider } from '@/components/mdx-provider'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <MDXComponentsProvider>
+          {children}
+        </MDXComponentsProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+### Frontmatter Support
+
+@next/mdx doesn't support frontmatter by default. Add it with remark-frontmatter:
+
+```bash
+npm install remark-frontmatter remark-mdx-frontmatter
+```
+
+Update `next.config.mjs`:
+
+```js
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [
+      remarkGfm,
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: 'frontmatter' }],
+    ],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+  },
+})
+```
+
+Then use it in your MDX:
+
+```mdx
+---
+title: My Post
+date: 2024-01-01
+---
+
+export const metadata = {
+  title: frontmatter.title,
+}
+
+# {frontmatter.title}
+
+Published on {new Date(frontmatter.date).toLocaleDateString()}
+```
+
+### Remote MDX
+
+Load MDX from remote sources:
+
+```tsx
+import { compileMDX } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/mdx-components'
+
+async function getRemoteContent() {
+  const res = await fetch('https://example.com/content.mdx')
+  const mdxContent = await res.text()
+
+  const { content, frontmatter } = await compileMDX({
+    source: mdxContent,
+    components: mdxComponents,
+    options: {
+      parseFrontmatter: true,
+    },
+  })
+
+  return { content, frontmatter }
+}
+
+export default async function Page() {
+  const { content, frontmatter } = await getRemoteContent()
+
+  return (
+    <article>
+      <h1>{frontmatter.title}</h1>
+      {content}
+    </article>
+  )
+}
+```
+
+## File Organization
+
+### Recommended Structure
+
+<Tree>
+  <TreeItem name="your-project" isFolder defaultOpen>
+    <TreeItem name="app" isFolder defaultOpen>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="[slug]" isFolder>
+          <TreeItem name="page.tsx" />
+        </TreeItem>
+        <TreeItem name="page.tsx" />
+      </TreeItem>
+      <TreeItem name="layout.tsx" />
+    </TreeItem>
+    <TreeItem name="content" isFolder>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="first-post.mdx" />
+        <TreeItem name="second-post.mdx" />
+      </TreeItem>
+    </TreeItem>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="mdx-ui" isFolder>
+        <TreeItem name="tree.tsx" />
+        <TreeItem name="callout.tsx" />
+      </TreeItem>
+      <TreeItem name="mdx-components.tsx" />
+    </TreeItem>
+    <TreeItem name="mdx-components.tsx" />
+    <TreeItem name="next.config.mjs" />
+  </TreeItem>
+</Tree>
+
+**Important:** The `mdx-components.tsx` file must be in the project root!
+
+## Troubleshooting
+
+### Components not found
+
+Make sure `mdx-components.tsx` is in the **project root**, not in a subdirectory.
+
+### TypeScript errors
+
+Install MDX types:
+
+```bash
+npm install --save-dev @types/mdx
+```
+
+Add to `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["mdx"]
+  }
+}
+```
+
+### Build errors with MDX files
+
+Ensure `pageExtensions` includes `mdx`:
+
+```js
+// next.config.mjs
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+}
+```
+
+### Styling not applied
+
+Make sure Tailwind CSS is configured to scan your components:
+
+```js
+// tailwind.config.ts
+export default {
+  content: [
+    './app/**/*.{ts,tsx,mdx}',
+    './components/**/*.{ts,tsx}',
+  ],
+}
+```
+
+## Next Steps
+
+- [Component Mappings](/docs/integration/component-mappings)
+- [Browse Components](/components)
+- [Next.js MDX Documentation](https://nextjs.org/docs/app/building-your-application/configuring/mdx)

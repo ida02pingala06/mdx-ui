@@ -1,0 +1,278 @@
+---
+title: FileTree
+description: Simple string-based file/folder tree structure with minimal syntax
+component: file-tree
+published: true
+dependencies: []
+registryDependencies: ["utils"]
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add file-tree
+```
+
+## Why FileTree?
+
+The `FileTree` component provides a **much simpler syntax** compared to the verbose `Tree` component. Instead of nesting multiple `<TreeItem>` components, you write a simple text structure.
+
+## Simple Syntax
+
+### Basic Example
+
+<FileTree>
+{`
+src*/
+  components*/
+    Button.tsx
+    Input.tsx
+  App.tsx
+package.json
+`}
+</FileTree>
+
+```tsx
+<FileTree>
+{`
+src*/
+  components*/
+    Button.tsx
+    Input.tsx
+  App.tsx
+package.json
+`}
+</FileTree>
+```
+
+## Syntax Rules
+
+| Syntax | Meaning |
+|--------|---------|
+| `folder/` | Folder (ends with `/`) |
+| `folder*/` | Folder open by default (ends with `*/`) |
+| `file.txt` | File (no trailing `/`) |
+| `  ` | 2 spaces = 1 level of nesting |
+
+## Examples
+
+### Deep Nesting
+
+<FileTree>
+{`
+src*/
+  app*/
+    features*/
+      auth*/
+        components/
+          LoginForm.tsx
+          SignupForm.tsx
+        hooks/
+          useAuth.ts
+        auth.service.ts
+      dashboard*/
+        Dashboard.tsx
+    App.tsx
+  main.tsx
+package.json
+`}
+</FileTree>
+
+```tsx
+<FileTree>
+{`
+src*/
+  app*/
+    features*/
+      auth*/
+        components/
+          LoginForm.tsx
+          SignupForm.tsx
+        hooks/
+          useAuth.ts
+        auth.service.ts
+      dashboard*/
+        Dashboard.tsx
+    App.tsx
+  main.tsx
+package.json
+`}
+</FileTree>
+```
+
+### Next.js Project
+
+<FileTree>
+{`
+my-project*/
+  app*/
+    blog/
+      [slug]/
+        page.tsx
+      page.tsx
+    layout.tsx
+  components*/
+    mdx-ui*/
+      file-tree.tsx
+      callout.tsx
+    mdx-components.tsx
+  content/
+    blog/
+      first-post.mdx
+      second-post.mdx
+  package.json
+  tsconfig.json
+  next.config.mjs
+`}
+</FileTree>
+
+### Monorepo Structure
+
+<FileTree>
+{`
+monorepo*/
+  apps*/
+    web*/
+      src/
+        App.tsx
+      package.json
+    api*/
+      src/
+        server.ts
+      package.json
+  packages*/
+    ui*/
+      src/
+        Button.tsx
+      package.json
+    utils*/
+      src/
+        helpers.ts
+      package.json
+  package.json
+  turbo.json
+`}
+</FileTree>
+
+## Comparison: FileTree vs Tree
+
+### ❌ Old Way (Tree component)
+
+```tsx
+<Tree>
+  <TreeItem name="src" isFolder defaultOpen>
+    <TreeItem name="app" isFolder defaultOpen>
+      <TreeItem name="features" isFolder defaultOpen>
+        <TreeItem name="auth" isFolder defaultOpen>
+          <TreeItem name="components" isFolder>
+            <TreeItem name="LoginForm.tsx" />
+            <TreeItem name="SignupForm.tsx" />
+          </TreeItem>
+        </TreeItem>
+      </TreeItem>
+    </TreeItem>
+  </TreeItem>
+</Tree>
+```
+
+### ✅ New Way (FileTree component)
+
+```tsx
+<FileTree>
+{`
+src*/
+  app*/
+    features*/
+      auth*/
+        components/
+          LoginForm.tsx
+          SignupForm.tsx
+`}
+</FileTree>
+```
+
+**90% less code!** 🎉
+
+## Features
+
+- **Ultra-simple syntax**: Just text with indentation
+- **Automatic nesting**: 2 spaces = 1 level
+- **Folder markers**: Use `/` for folders, `*/` for open folders
+- **Interactive**: Click folders to expand/collapse
+- **Visual hierarchy**: Tree lines and icons
+- **Zero props**: Everything is in the string
+
+## When to Use
+
+### Use FileTree when:
+- ✅ You have simple, static file structures
+- ✅ You want minimal typing
+- ✅ The structure won't change dynamically
+- ✅ You're documenting project layouts
+
+### Use Tree when:
+- �� You need programmatic control over each item
+- 🔧 Items have custom props or event handlers
+- 🔧 Structure is generated dynamically
+- 🔧 You need custom styling per item
+
+## Tips
+
+1. **Indentation matters**: Use exactly 2 spaces per level
+2. **Trailing slash**: Always end folders with `/`
+3. **Open by default**: Add `*` before `/` for folders (`folder*/`)
+4. **Empty lines**: Will be ignored automatically
+5. **Curly braces**: Use `{` + backticks + `}` to preserve whitespace
+
+## Common Patterns
+
+### Config Files Location
+
+<FileTree>
+{`
+project-root*/
+  .env.local
+  .gitignore
+  tailwind.config.ts
+  tsconfig.json
+  next.config.mjs
+  package.json
+`}
+</FileTree>
+
+### Component Library
+
+<FileTree>
+{`
+components*/
+  ui*/
+    button.tsx
+    input.tsx
+    card.tsx
+  mdx-ui*/
+    callout.tsx
+    file-tree.tsx
+    steps.tsx
+  index.ts
+`}
+</FileTree>
+
+## MDX Component Mapping
+
+Add to your `mdx-components.tsx`:
+
+```tsx
+import { FileTree } from "@/components/mdx-ui/file-tree"
+
+export const mdxComponents = {
+  // ... other components
+  FileTree,
+}
+```
+
+## Accessibility
+
+- Folders are keyboard accessible (click to toggle)
+- Screen readers will read folder/file names
+- Semantic HTML structure
+- Works in both light and dark modes

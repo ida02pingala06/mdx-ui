@@ -121,7 +121,7 @@ function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarR
             />
           </button>
         </div>
-        {isExpanded && (
+        {isExpanded && route.routes && (
           <div className="ml-2 border-l pl-2">
             <SidebarRouteTree routes={route.routes} pathname={pathname} level={level + 1} pathPrefix={pathPrefix} />
           </div>

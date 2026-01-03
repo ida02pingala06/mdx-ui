@@ -1,0 +1,87 @@
+---
+title: Emphasis
+description: Bold and italic text styling
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add emphasis
+```
+
+## Usage
+
+### Bold Text
+
+Use double asterisks or double underscores for bold text:
+
+```mdx
+**This text is bold**
+__This is also bold__
+```
+
+### Italic Text
+
+Use single asterisks or single underscores for italic text:
+
+```mdx
+*This text is italic*
+_This is also italic_
+```
+
+### Combined
+
+You can combine bold and italic:
+
+```mdx
+***This is bold and italic***
+**This is bold with *italic* inside**
+*This is italic with **bold** inside*
+```
+
+## Features
+
+- Semantic HTML (`<strong>` and `<em>`)
+- Proper font weight and style
+- Accessible styling
+- Works with light and dark themes
+
+## Examples
+
+### Basic Emphasis
+
+```mdx
+Regular text, **bold text**, and *italic text* all in one sentence.
+```
+
+### Strong Emphasis
+
+```mdx
+This is **very important** and requires ***immediate attention***.
+```
+
+### In Context
+
+```mdx
+# Documentation
+
+When writing docs, use **bold** for important terms and *italic* for emphasis.
+
+**Note:** Always test your *components* before deploying.
+```
+
+## Customization
+
+The emphasis components map to standard HTML:
+
+- `**text**` → `<strong>text</strong>`
+- `*text*` → `<em>text</em>`
+
+You can customize styling through your global CSS or Tailwind configuration.
+
+## Accessibility
+
+- Uses semantic HTML elements
+- Proper ARIA roles are inherited
+- Screen reader friendly

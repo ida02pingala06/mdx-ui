@@ -29,6 +29,20 @@
       "registryDependencies": ["utils"]
     },
     {
+      "name": "file-tree",
+      "type": "mdx",
+      "description": "Simple string-based file/folder tree structure with minimal syntax",
+      "files": ["mdx/file-tree.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "heading",
+      "type": "mdx",
+      "description": "Flexible and reusable heading component with variant support",
+      "files": ["mdx/heading.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
       "name": "headings",
       "type": "mdx",
       "description": "Markdown headings (H1-H6) with auto-generated anchor links for navigation",
@@ -79,6 +93,13 @@
       "type": "mdx",
       "description": "Tabbed content sections with state management",
       "files": ["mdx/tabs.json"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "tree",
+      "type": "mdx",
+      "description": "Interactive file/folder tree structure for displaying project organization",
+      "files": ["mdx/tree.json"],
       "registryDependencies": ["utils"]
     },
     {

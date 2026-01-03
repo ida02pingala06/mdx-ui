@@ -23,6 +23,10 @@
       "path": "/docs/components/callout"
     },
     {
+      "title": "File Tree",
+      "path": "/docs/components/file-tree"
+    },
+    {
       "title": "Heading",
       "path": "/docs/components/heading"
     },
@@ -37,6 +41,34 @@
     {
       "title": "Steps",
       "path": "/docs/components/steps"
+    },
+    {
+      "title": "Tree",
+      "path": "/docs/components/tree"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Integration"
+    },
+    {
+      "title": "Overview",
+      "path": "/docs/integration"
+    },
+    {
+      "title": "Component Mappings",
+      "path": "/docs/integration/component-mappings"
+    },
+    {
+      "title": "Next.js + next-mdx-remote",
+      "path": "/docs/integration/nextjs-mdx-remote"
+    },
+    {
+      "title": "Next.js + Contentlayer",
+      "path": "/docs/integration/nextjs-contentlayer"
+    },
+    {
+      "title": "Next.js + @next/mdx",
+      "path": "/docs/integration/nextjs-mdx"
     }
   ]
 }

@@ -1,0 +1,224 @@
+---
+title: Tree
+description: Interactive file/folder tree structure for displaying project organization
+component: tree
+published: true
+dependencies: []
+registryDependencies: ["utils"]
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add tree
+```
+
+<Callout type="info">
+**Looking for simpler syntax?** Check out the [FileTree](/docs/components/file-tree) component for a string-based alternative with 90% less code!
+</Callout>
+
+## Usage
+
+The Tree component helps you display file and folder structures in your documentation, making it easy for users to understand project organization.
+
+This component gives you **full programmatic control** over each tree item. If you prefer a simpler text-based syntax, use [FileTree](/docs/components/file-tree) instead.
+
+### Basic Example
+
+<Tree>
+  <TreeItem name="src" isFolder defaultOpen>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="Button.tsx" />
+      <TreeItem name="Input.tsx" />
+    </TreeItem>
+    <TreeItem name="App.tsx" />
+  </TreeItem>
+  <TreeItem name="package.json" />
+</Tree>
+
+```tsx
+<Tree>
+  <TreeItem name="src" isFolder defaultOpen>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="Button.tsx" />
+      <TreeItem name="Input.tsx" />
+    </TreeItem>
+    <TreeItem name="App.tsx" />
+  </TreeItem>
+  <TreeItem name="package.json" />
+</Tree>
+```
+
+### Complex Project Structure
+
+<Tree>
+  <TreeItem name="my-project" isFolder defaultOpen>
+    <TreeItem name="app" isFolder defaultOpen>
+      <TreeItem name="blog" isFolder defaultOpen>
+        <TreeItem name="[slug]" isFolder>
+          <TreeItem name="page.tsx" />
+        </TreeItem>
+        <TreeItem name="page.tsx" />
+      </TreeItem>
+      <TreeItem name="layout.tsx" />
+    </TreeItem>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="mdx-ui" isFolder defaultOpen>
+        <TreeItem name="tree.tsx" />
+        <TreeItem name="callout.tsx" />
+      </TreeItem>
+      <TreeItem name="mdx-components.tsx" />
+    </TreeItem>
+    <TreeItem name="content" isFolder>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="first-post.mdx" />
+        <TreeItem name="second-post.mdx" />
+      </TreeItem>
+    </TreeItem>
+    <TreeItem name="package.json" />
+    <TreeItem name="tsconfig.json" />
+    <TreeItem name="next.config.mjs" />
+  </TreeItem>
+</Tree>
+
+```tsx
+<Tree>
+  <TreeItem name="my-project" isFolder defaultOpen>
+    <TreeItem name="app" isFolder defaultOpen>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="[slug]" isFolder>
+          <TreeItem name="page.tsx" />
+        </TreeItem>
+        <TreeItem name="page.tsx" />
+      </TreeItem>
+      <TreeItem name="layout.tsx" />
+    </TreeItem>
+    <TreeItem name="components" isFolder defaultOpen>
+      <TreeItem name="mdx-ui" isFolder>
+        <TreeItem name="tree.tsx" />
+        <TreeItem name="callout.tsx" />
+      </TreeItem>
+      <TreeItem name="mdx-components.tsx" />
+    </TreeItem>
+    <TreeItem name="content" isFolder>
+      <TreeItem name="blog" isFolder>
+        <TreeItem name="first-post.mdx" />
+        <TreeItem name="second-post.mdx" />
+      </TreeItem>
+    </TreeItem>
+    <TreeItem name="package.json" />
+    <TreeItem name="tsconfig.json" />
+    <TreeItem name="next.config.mjs" />
+  </TreeItem>
+</Tree>
+```
+
+## Features
+
+- **Interactive folders**: Click folders to expand/collapse
+- **Visual hierarchy**: Clear tree structure with connecting lines
+- **Icons**: Folder and file icons for easy identification
+- **Default state**: Control which folders are open by default
+- **Monospace font**: Uses mono font for authentic terminal feel
+- **Accessible**: Keyboard and screen reader friendly
+
+## Props
+
+### Tree
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | TreeItem components |
+| `className` | `string` | - | Additional CSS classes |
+
+### TreeItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | - | Name of the file or folder |
+| `isFolder` | `boolean` | `false` | Whether this item is a folder |
+| `defaultOpen` | `boolean` | `false` | Whether folder is expanded by default |
+| `children` | `ReactNode` | - | Nested TreeItem components |
+| `className` | `string` | - | Additional CSS classes |
+
+## Use Cases
+
+### Documentation Project Structure
+
+Perfect for showing users how to organize their projects:
+
+<Tree>
+  <TreeItem name="docs-site" isFolder defaultOpen>
+    <TreeItem name="content" isFolder defaultOpen>
+      <TreeItem name="getting-started.mdx" />
+      <TreeItem name="installation.mdx" />
+      <TreeItem name="configuration.mdx" />
+    </TreeItem>
+    <TreeItem name="components" isFolder>
+      <TreeItem name="Navigation.tsx" />
+      <TreeItem name="Sidebar.tsx" />
+    </TreeItem>
+    <TreeItem name="README.md" />
+  </TreeItem>
+</Tree>
+
+### Config Files Location
+
+Show where configuration files should be placed:
+
+<Tree>
+  <TreeItem name="root" isFolder defaultOpen>
+    <TreeItem name=".env.local" />
+    <TreeItem name="tailwind.config.ts" />
+    <TreeItem name="tsconfig.json" />
+    <TreeItem name="next.config.mjs" />
+    <TreeItem name="package.json" />
+  </TreeItem>
+</Tree>
+
+### Component Library Structure
+
+Display component organization:
+
+<Tree>
+  <TreeItem name="components" isFolder defaultOpen>
+    <TreeItem name="ui" isFolder defaultOpen>
+      <TreeItem name="button.tsx" />
+      <TreeItem name="input.tsx" />
+      <TreeItem name="card.tsx" />
+    </TreeItem>
+    <TreeItem name="mdx-ui" isFolder defaultOpen>
+      <TreeItem name="callout.tsx" />
+      <TreeItem name="steps.tsx" />
+      <TreeItem name="tree.tsx" />
+    </TreeItem>
+  </TreeItem>
+</Tree>
+
+## Best Practices
+
+1. **Use `defaultOpen` wisely**: Only expand folders that are immediately relevant to reduce visual clutter
+2. **Keep it focused**: Show only the relevant parts of the project structure
+3. **Add comments**: Use regular text before/after the tree to explain what users should notice
+4. **Combine with Steps**: Use Tree inside Steps component for installation tutorials
+
+## MDX Component Mapping
+
+Add to your `mdx-components.tsx`:
+
+```tsx
+import { Tree, TreeItem } from "@/components/mdx-ui/tree"
+
+export const mdxComponents = {
+  // ... other components
+  Tree,
+  TreeItem,
+}
+```
+
+## Tips
+
+- Folders are clickable and can be expanded/collapsed
+- Use `defaultOpen` to show important folders by default
+- The component automatically handles indentation and tree lines
+- Works great in both light and dark modes

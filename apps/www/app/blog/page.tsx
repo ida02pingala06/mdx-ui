@@ -20,7 +20,7 @@ export default function BlogPage() {
               </div>
             </div>
             <p className="leading-7 text-muted-foreground">
-              We're excited to announce the first stable release of MDX UI. This release includes
+              We&rsquo;re excited to announce the first stable release of MDX UI. This release includes
               12 production-ready components, a powerful CLI tool, and comprehensive documentation.
             </p>
           </article>
@@ -36,7 +36,7 @@ export default function BlogPage() {
             </div>
             <p className="leading-7 text-muted-foreground">
               Learn best practices for creating engaging documentation with MDX UI components.
-              We'll cover navigation patterns, content structure, and accessibility considerations.
+              We&rsquo;ll cover navigation patterns, content structure, and accessibility considerations.
             </p>
           </article>
 
@@ -51,7 +51,7 @@ export default function BlogPage() {
             </div>
             <p className="leading-7 text-muted-foreground">
               MDX UI is a new project aimed at making it easier to build beautiful, accessible
-              documentation sites with MDX. Here's what makes it different.
+              documentation sites with MDX. Here&rsquo;s what makes it different.
             </p>
           </article>
         </div>

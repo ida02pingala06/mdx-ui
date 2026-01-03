@@ -1,0 +1,176 @@
+---
+title: List
+description: Styled ordered and unordered lists
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add list
+```
+
+## Usage
+
+### Unordered Lists
+
+Use hyphens, asterisks, or plus signs:
+
+```mdx
+- Item one
+- Item two
+- Item three
+```
+
+### Ordered Lists
+
+Use numbers followed by periods:
+
+```mdx
+1. First item
+2. Second item
+3. Third item
+```
+
+## Features
+
+- Clean, readable styling
+- Proper spacing between items
+- Nested list support
+- Theme-aware colors
+- Responsive design
+
+## Examples
+
+### Basic Unordered List
+
+```mdx
+Features:
+
+- Easy to use
+- Fully customizable
+- TypeScript support
+- Dark mode ready
+```
+
+### Basic Ordered List
+
+```mdx
+Installation steps:
+
+1. Install the CLI
+2. Initialize your project
+3. Add components
+4. Start building
+```
+
+### Nested Lists
+
+```mdx
+Project structure:
+
+- src/
+  - components/
+    - mdx-ui/
+      - callout.tsx
+      - headings.tsx
+  - app/
+    - page.tsx
+- public/
+- package.json
+```
+
+### Mixed Lists
+
+```mdx
+Setup process:
+
+1. Prerequisites
+   - Node.js installed
+   - Next.js project
+   - Tailwind CSS configured
+2. Installation
+   - Run init command
+   - Add components
+3. Configuration
+   - Update MDX settings
+   - Add component mappings
+```
+
+### Task Lists
+
+```mdx
+- [x] Install dependencies
+- [x] Set up project
+- [ ] Write documentation
+- [ ] Deploy to production
+```
+
+## Styling
+
+Lists have:
+
+- Consistent spacing between items
+- Proper indentation for nested items
+- Distinct markers (bullets or numbers)
+- Readable line height
+- Theme-aware text colors
+
+## Customization
+
+Customize through component mappings:
+
+```tsx
+import { Ul, Ol, Li } from "@/components/mdx-ui/list"
+
+export const mdxComponents = {
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+}
+```
+
+## Variants
+
+### Compact Lists
+
+For tighter spacing:
+
+```mdx
+- Item 1
+- Item 2
+- Item 3
+```
+
+### Spaced Lists
+
+For better readability with longer items:
+
+```mdx
+- This is a longer list item that contains more detailed information about a specific topic
+
+- This is another longer item with multiple sentences. It provides context and explanation.
+
+- The third item continues the pattern with detailed content
+```
+
+## Accessibility
+
+- Uses semantic HTML (`<ul>`, `<ol>`, `<li>`)
+- Proper ARIA roles are inherited
+- Screen reader friendly
+- Keyboard navigable
+
+## Best Practices
+
+1. Use unordered lists for items without sequence
+2. Use ordered lists for step-by-step instructions
+3. Keep list items concise
+4. Maintain consistent formatting
+5. Use nested lists sparingly for clarity
+
+## Notes
+
+- Lists automatically get proper spacing
+- Nested lists are indented appropriately
+- Task lists require GitHub-flavored markdown

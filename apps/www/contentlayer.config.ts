@@ -1,18 +1,17 @@
-import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+import { defineDocumentType, makeSource, ComputedFields } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-/** @type {import('contentlayer2/source-files').ComputedFields} */
-const computedFields = {
+const computedFields: ComputedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc: any) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc: any) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
 };
 
@@ -53,7 +52,7 @@ export const Component = defineDocumentType(() => ({
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
-  filePathPattern: `docs/*.mdx`,
+  filePathPattern: `docs/{index,integration/**/*}.mdx`,
   contentType: "mdx",
   fields: {
     title: {

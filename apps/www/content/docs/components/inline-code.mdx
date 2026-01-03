@@ -1,0 +1,116 @@
+---
+title: Inline Code
+description: Styled inline code snippets
+published: true
+---
+
+## Installation
+
+```bash
+npx @suryaravikumar/mdx-ui add inline-code
+```
+
+## Usage
+
+Wrap text in backticks to create inline code:
+
+```mdx
+Use the `npm install` command to install packages.
+```
+
+## Features
+
+- Monospace font
+- Distinct background color
+- Proper spacing and padding
+- Theme-aware styling
+- Syntax highlighting compatible
+
+## Examples
+
+### Basic Inline Code
+
+```mdx
+The `useState` hook is essential for React state management.
+```
+
+### In Sentences
+
+```mdx
+Run `npm run dev` to start the development server on `localhost:3000`.
+```
+
+### With Variables
+
+```mdx
+Set the `API_KEY` environment variable before running `npm start`.
+```
+
+### Multiple Code Snippets
+
+```mdx
+Use `git add .` followed by `git commit -m "message"` and then `git push`.
+```
+
+### Technical Documentation
+
+```mdx
+The `Array.prototype.map()` method creates a new array by calling `callback` on every element.
+```
+
+## Styling
+
+The inline code component has:
+
+- Distinct background color (light gray in light mode, dark gray in dark mode)
+- Slightly smaller font size
+- Monospace font family
+- Subtle padding for better readability
+- Rounded corners
+
+## Customization
+
+Customize through your MDX component mappings:
+
+```tsx
+import { Code } from "@/components/mdx-ui/inline-code"
+
+export const mdxComponents = {
+  code: Code,
+}
+```
+
+Or create your own styled version:
+
+```tsx
+export function InlineCode({ children, ...props }: React.HTMLAttributes<HTMLElement>) {
+  return (
+    <code
+      className="px-1.5 py-0.5 rounded bg-muted font-mono text-sm"
+      {...props}
+    >
+      {children}
+    </code>
+  )
+}
+```
+
+## Accessibility
+
+- Uses semantic `<code>` element
+- Monospace font improves readability
+- Sufficient color contrast
+- Screen reader friendly
+
+## Best Practices
+
+1. Use for command names, code variables, and function names
+2. Don't use for long code examples (use code blocks instead)
+3. Keep inline code concise
+4. Use backticks consistently
+
+## Notes
+
+- Single backticks create inline code
+- Triple backticks create code blocks
+- Inline code doesn't support syntax highlighting

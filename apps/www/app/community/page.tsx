@@ -16,7 +16,7 @@ export default function CommunityPage() {
             </h2>
             <p className="leading-7">
               MDX UI is an open source project that welcomes contributions from everyone. Whether
-              you want to fix a bug, add a feature, or improve documentation, we'd love your help.
+              you want to fix a bug, add a feature, or improve documentation, we&rsquo;d love your help.
             </p>
           </section>
 
